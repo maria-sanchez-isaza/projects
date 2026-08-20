@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Upload</title>
+  <title>Projects</title>
 
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 40px 20px;
       min-height: 100vh;
+      box-sizing: border-box;
     }
 
     .container {
       background: white;
       padding: 40px;
       border-radius: 12px;
-      max-width: 600px;
+      max-width: 900px;
       width: 90%;
+      margin: 0 auto;
       text-align: center;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
@@ -36,30 +35,39 @@
       line-height: 1.6;
     }
 
-    .upload-area {
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
       margin-top: 30px;
-      padding: 30px;
-      border: 2px dashed #aaa;
+      text-align: left;
+    }
+
+    .project-card {
+      display: block;
+      padding: 20px;
+      border: 1px solid #ddd;
       border-radius: 10px;
+      text-decoration: none;
+      color: #222;
+      background: #fafafa;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
     }
 
-    input[type="file"] {
-      margin-top: 15px;
+    .project-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
     }
 
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      background: #222;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
+    .project-card h2 {
+      margin: 0;
+      font-size: 18px;
     }
 
-    button:hover {
-      background: #444;
+    .empty-note {
+      color: #888;
+      font-style: italic;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -70,10 +78,20 @@
     <h1>Welcome</h1>
 
     <p>
-      This page is a place to test and share project files.      
+      This page is a place to test and share project files.
     </p>
 
-   
+    <div class="projects-grid">
+<!-- PROJECTS:START -->
+      <a class="project-card" href="./DioramixEdit/">
+        <h2>DioramixEdit</h2>
+      </a>
+      <a class="project-card" href="./DioramixTest/">
+        <h2>DioramixTest</h2>
+      </a>
+<!-- PROJECTS:END -->
+    </div>
+  </div>
 
 </body>
 </html>

@@ -1,0 +1,32 @@
+name: Update project index
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'index.html'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Regenerate index.html
+        run: node scripts/update-projects-index.js
+
+      - name: Commit and push if index.html changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update project index"
+          file_pattern: index.html

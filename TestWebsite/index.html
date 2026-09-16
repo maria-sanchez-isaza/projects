@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafbf8">
+  <meta name="description" content="Interactive digital signage, reality capture, and spatial computing. Tosolini Productions turns complex ideas into experiences people can explore.">
+  <title>Tosolini Productions — Ideas you can experience</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%239bd500'/%3E%3Cpath d='M12 6v15q0 6 8 4' fill='none' stroke='%2312181c' stroke-width='3'/%3E%3Cpath d='M7 13h18' stroke='%2312181c' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#additional-services">Skip the visual experience</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Tosolini Productions home"><span class="brand-art"><img src="assets/tosolini-logo-reference.jpg" alt="Tosolini Productions" width="1500" height="1500"></span></a>
+    <nav aria-label="Main navigation">
+      <a href="#experience" class="nav-explore">Explore our work</a>
+      <a href="#additional-services" class="nav-services">Capabilities</a>
+      <a class="contact-link" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="experience" id="experience" aria-label="Explore our three core capabilities">
+      <div class="scene">
+        <div class="scene-media">
+          <video id="showroom-video" src="AI-Reneder-Test.mp4" poster="assets/overview.jpg" muted playsinline preload="auto" aria-label="Tosolini showroom: interactive signage, reality capture, and spatial computing"></video>
+        </div>
+        <div class="scene-topline"><span>CREATIVE TECHNOLOGY STUDIO</span><span class="location">BELLEVUE, WASHINGTON · WORKING EVERYWHERE</span></div>
+        <div class="intro-copy" data-panel="intro">
+          <p class="eyebrow">Digital meets physical.</p>
+          <h1>Ideas you can<br><em>experience.</em></h1>
+          <p>We turn complex stories into spaces, interactions, and experiences people remember.</p>
+          <a class="text-link explore-link" href="#signage">Step inside <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="story-copy story-copy--left" data-panel="signage" aria-hidden="true" inert>
+          <p class="eyebrow"><span class="section-number">01</span> INTERACTIVE DIGITAL SIGNAGE</p>
+          <h2>A screen.<br>A conversation.</h2>
+          <p>Turn a moment of attention into a meaningful interaction. Touch experiences for showrooms, briefing centers, and events.</p>
+          <a class="text-link" href="#contact">Bring your story to life <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="story-copy story-copy--right" data-panel="capture" aria-hidden="true" inert>
+          <p class="eyebrow"><span class="section-number">02</span> REALITY CAPTURE / DIGITAL TWINS</p>
+          <h2>Real places.<br>New perspectives.</h2>
+          <p>Make a physical space accessible from anywhere. Detailed digital twins for exploring, understanding, and sharing.</p>
+          <a class="text-link" href="#contact">Capture your space <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="story-copy story-copy--left" data-panel="spatial" aria-hidden="true" inert>
+          <p class="eyebrow"><span class="section-number">03</span> SPATIAL COMPUTING</p>
+          <h2>Beyond the<br>flat screen.</h2>
+          <p>Put people inside the idea. Immersive experiences that make products, places, and possibilities easier to understand.</p>
+          <a class="text-link" href="#contact">Explore what's possible <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="scene-bottom">
+          <div class="scroll-cue"><span class="scroll-icon" aria-hidden="true">↓</span><span id="journey-label">Scroll to explore</span></div>
+          <nav class="chapter-nav" aria-label="Showroom chapters">
+            <a href="#signage" data-chapter="signage"><span>01</span> Signage</a>
+            <a href="#capture" data-chapter="capture"><span>02</span> Capture</a>
+            <a href="#spatial" data-chapter="spatial"><span>03</span> Spatial</a>
+          </nav>
+          <a class="skip-experience" href="#additional-services">Continue to capabilities <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="journey-track" aria-hidden="true"><div id="journey-progress"></div></div>
+        <p class="video-status" id="video-status" role="status"></p>
+        <button class="film-button" id="film-button" type="button"><span aria-hidden="true">▶</span> Play the showroom film</button>
+      </div>
+    </section>
+    <section class="fallback-pillars" aria-label="Our core capabilities">
+      <article id="signage"><div class="fallback-image"><img src="assets/signage.jpg" alt="A visitor engaging with an interactive touchscreen in the Tosolini showroom." loading="lazy" width="1280" height="720"></div><div><p class="eyebrow">01 / INTERACTIVE DIGITAL SIGNAGE</p><h2>A screen. A conversation.</h2><p>Touch experiences that bring your story to life, from showrooms and briefing centers to events.</p><a class="text-link" href="#contact">Bring your story to life ↗</a></div></article>
+      <article id="capture"><div class="fallback-image"><img src="assets/capture.jpg" alt="A scanning specialist capturing a physical environment." loading="lazy" width="1280" height="720"></div><div><p class="eyebrow">02 / REALITY CAPTURE & DIGITAL TWINS</p><h2>Real places. New perspectives.</h2><p>Make a physical space accessible from anywhere with a detailed digital twin.</p><a class="text-link" href="#contact">Capture your space ↗</a></div></article>
+      <article id="spatial"><div class="fallback-image"><img src="assets/spatial.jpg" alt="A VR user exploring a translucent architectural model." loading="lazy" width="1280" height="720"></div><div><p class="eyebrow">03 / SPATIAL COMPUTING</p><h2>Beyond the flat screen.</h2><p>Immersive experiences that make products, places, and possibilities easier to understand.</p><a class="text-link" href="#contact">Explore what's possible ↗</a></div></article>
+    </section>
+    <section class="capabilities section-wrap" id="additional-services">
+      <div class="section-heading"><p class="eyebrow">A LITTLE FURTHER</p><h2>More ways to<br>make it <em>real.</em></h2><p>The right format for your story.<br>The craft to bring it together.</p></div>
+      <div class="capability-list">
+        <article><span class="row-number">01 /</span><div><h3>3D & architectural visualization</h3><p>Show what’s possible before it’s built. Spaces, products, and concepts, made visible.</p></div><span class="service-tag">Visualize</span></article>
+        <article><span class="row-number">02 /</span><div><h3>Creative technology & prototyping</h3><p>Explore an idea, test an interaction, and find a practical path from possibility to experience.</p></div><span class="service-tag">Explore</span></article>
+        <article><span class="row-number">03 /</span><div><h3>Motion & visual storytelling</h3><p>Bring clarity to a complex story through animation, thoughtful visuals, and purposeful motion.</p></div><span class="service-tag">Communicate</span></article>
+      </div>
+    </section>
+    <section class="clients section-wrap" id="clients">
+      <div class="clients-heading"><p class="eyebrow">GOOD COMPANY</p><h2>Built on collaboration.</h2><p>A selection of clients and collaborators.</p></div>
+      <!-- Client names are listed on https://www.tosolini.com/ . Plain text, not recreated logos. -->
+      <ul class="client-names" aria-label="Selected clients and collaborators"><li>Microsoft</li><li>Deloitte</li><li>Accenture</li><li>T-Mobile</li><li>Meta</li><li>FICO</li></ul>
+    </section>
+    <section class="contact section-wrap" id="contact">
+      <div><p class="eyebrow">YOUR NEXT CHAPTER</p><h2>Let’s make<br>something <em>tangible.</em></h2></div>
+      <div class="contact-details"><p>Have a space, a story, or a possibility in mind?<br>We’d love to hear about it.</p><a class="project-button" href="mailto:paolo@tosolini.com?subject=Let%27s%20start%20a%20project">Start a conversation <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:paolo@tosolini.com">paolo@tosolini.com</a><span class="contact-location">Bellevue, Washington</span></div>
+    </section>
+  </main>
+  <footer class="site-footer"><a href="#top">Tosolini Productions</a><span>Digital experiences. Human connections.</span><a href="#top">Back to top ↑</a></footer>
+  <noscript><style>.film-button{display:none}</style><p class="noscript-note">The three capabilities are available below. Open <a href="AI-Reneder-Test.mp4">the showroom film</a> to watch it.</p></noscript>
+</body>
+</html>

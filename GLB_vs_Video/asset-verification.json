@@ -1,0 +1,15 @@
+{
+  "video": "F05_Assembly_Intro_1080p30.mp4",
+  "bytes": 1005227,
+  "duration": 4,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "codec": "H.264",
+  "pixel_format": "yuv420p",
+  "audio": false,
+  "fast_start": true,
+  "source_unchanged": true,
+  "copied_assets_identical": true,
+  "video_sha256": "1def77ec6de465a54fcb9eb65c0bddd066de74e7ff92d979a3082ef7fb7c824a"
+}

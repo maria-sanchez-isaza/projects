@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Tosolini · Desktop model review</title>
+<style>body{margin:0;background:#e5e1da;color:#252c28;font:14px system-ui}header{padding:18px 26px;display:flex;align-items:center;gap:14px}h1{font-size:17px;margin:0 auto 0 0;font-weight:550}button{border:1px solid #b1b7ad;border-radius:30px;padding:9px 15px;background:#f5f5ed;color:inherit;cursor:pointer}button:hover{background:#d4e9c1}#view{width:min(100vw,calc((100vh - 125px)*16/9));aspect-ratio:16/9;margin:auto}canvas{display:block;width:100%;height:100%}footer{padding:12px 26px;display:flex;justify-content:space-between;color:#586056}#status{font-variant-numeric:tabular-nums}</style>
+<script type="importmap">{"imports":{"three":"./vendor/build/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+<header><h1>Tosolini Productions · Desktop 3D review</h1><button id="intro" disabled>Replay intro</button><button id="idle" disabled>Idle loop</button><button id="pause" disabled>Pause</button><button id="reset" disabled>Reset camera</button></header><div id="view"></div><footer><span id="status">Loading animated showroom…</span><span>Drag to orbit · Scroll to inspect</span></footer>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
+const view=document.querySelector('#view'),status=document.querySelector('#status');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setClearColor(0xe5e1da);renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.05;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;view.appendChild(renderer.domElement);
+const scene=new THREE.Scene();const pmrem=new THREE.PMREMGenerator(renderer);const room=new RoomEnvironment();scene.environment=pmrem.fromScene(room,.06).texture;scene.environmentIntensity=.6;room.dispose();pmrem.dispose();
+scene.add(new THREE.HemisphereLight(0xe6f2ff,0xbda58b,1.2));
+const key=new THREE.DirectionalLight(0xffefda,3.0);key.position.set(-5,12,6);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-12,right:12,top:12,bottom:-12,near:.5,far:40});key.shadow.normalBias=.025;key.shadow.bias=-.0001;scene.add(key);
+const fill=new THREE.DirectionalLight(0xe1edff,1.0);fill.position.set(8,7,-3);scene.add(fill);
+let camera,controls,mixer,actions,active,paused=false,initialCamera;const timer=new THREE.Timer();timer.connect(document);
+function resize(){renderer.setSize(view.clientWidth,view.clientHeight,false)}new ResizeObserver(resize).observe(view);
+function play(name){mixer.stopAllAction();active=name;const a=actions[name];a.reset();a.enabled=true;a.setEffectiveWeight(1);a.setEffectiveTimeScale(1);a.clampWhenFinished=name==='Intro';a.setLoop(name==='Intro'?THREE.LoopOnce:THREE.LoopRepeat,Infinity);a.play();paused=false;document.querySelector('#pause').textContent='Pause';mixer.update(0)}
+const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+try{
+ const gltf=await loader.loadAsync(new URLSearchParams(location.search).has('raw')?'../showroom.raw.glb':'../Tosolini_Showroom_Desktop.glb');scene.add(gltf.scene);gltf.scene.updateMatrixWorld(true);
+ gltf.scene.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;/* Source scan and hologram alpha are kept. */}});
+ const original=gltf.cameras[0];if(!original)throw Error('Missing overview camera');camera=original.clone();original.matrixWorld.decompose(camera.position,camera.quaternion,camera.scale);camera.updateMatrixWorld();initialCamera=camera.clone();
+ controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;const direction=camera.getWorldDirection(new THREE.Vector3());controls.target.copy(camera.position).addScaledVector(direction,30);controls.update();controls.saveState();
+ mixer=new THREE.AnimationMixer(gltf.scene);actions=Object.fromEntries(gltf.animations.map(c=>[c.name,mixer.clipAction(c)]));mixer.addEventListener('finished',e=>{if(!paused&&e.action===actions.Intro)play('Idle_Loop')});
+ document.querySelectorAll('button').forEach(b=>b.disabled=false);document.querySelector('#intro').onclick=()=>play('Intro');document.querySelector('#idle').onclick=()=>play('Idle_Loop');document.querySelector('#pause').onclick=()=>{paused=!paused;document.querySelector('#pause').textContent=paused?'Resume':'Pause'};document.querySelector('#reset').onclick=()=>controls.reset();
+ window.review={gltf,scene,renderer,get camera(){return camera},get active(){return active},play,seek(name,time){play(name);paused=true;mixer.update(time);scene.updateMatrixWorld(true);return {name,time}},stats(){return {clips:gltf.animations.map(c=>({name:c.name,duration:c.duration,tracks:c.tracks.length})),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,meshes:gltf.scene.getObjectsByProperty('isMesh',true).length}},snapshot(){scene.updateMatrixWorld(true);return gltf.scene.getObjectsByProperty('isMesh',true).map(o=>({name:o.name,matrix:o.matrixWorld.toArray(),weights:o.morphTargetInfluences||[],bones:o.skeleton?Array.from(o.skeleton.boneMatrices):[]}))}};
+ play('Intro');resize();
+}catch(e){status.textContent='Could not load model: '+e.message;console.error(e)}
+renderer.setAnimationLoop(()=>{timer.update();const dt=Math.min(timer.getDelta(),.05);if(mixer&&!paused)mixer.update(dt);if(controls)controls.update();if(camera){renderer.render(scene,camera);status.textContent=`${active} · ${actions[active].time.toFixed(1)} s · ${paused?'Paused':'Playing'}`}});
+</script></html>

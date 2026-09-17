@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Tosolini · GLB vs Video</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f7f3;color:#252c28;font:14px/1.5 system-ui,sans-serif}main{max-width:1920px;margin:auto;padding:32px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:28px}h1{font-size:22px;font-weight:550;margin:0}header p{margin:5px 0 0;color:#687165}button{border:1px solid #b1b7ad;border-radius:30px;padding:8px 14px;background:#fff;color:inherit;font:inherit;cursor:pointer}button:hover{background:#e6efdf}button:disabled{opacity:.45;cursor:wait}button:focus-visible{outline:2px solid #4e7735;outline-offset:3px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}section{min-width:0;border:1px solid #dcded5;background:#fff;border-radius:12px;overflow:hidden}h2{font-size:17px;font-weight:550;margin:0;padding:16px 20px;border-bottom:1px solid #e6e8e0}.media{width:100%;aspect-ratio:16/9;background:#e5e1da;overflow:hidden}canvas,video{display:block;width:100%;height:100%;object-fit:contain}.panel-footer{padding:14px 20px;display:flex;flex-direction:column;gap:12px}.buttons{display:flex;flex-wrap:wrap;gap:7px;min-height:39px}.details{color:#687165;font-size:12px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-variant-numeric:tabular-nums}.note{font-size:12px;color:#687165;margin:18px 0 0}@media(max-width:900px){main{padding:20px}.grid{grid-template-columns:1fr;gap:22px}header{align-items:flex-start}h1{font-size:20px}}@media(max-width:480px){main{padding:14px}header{flex-direction:column;gap:12px}.panel-footer{padding:12px}h2{padding:12px}.buttons button{font-size:12px;padding:7px 11px}}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/build/three.module.js","three/addons/":"./vendor/addons/"}}</script></head>
+<body><main><header><div><h1>Tosolini showroom · GLB vs Video</h1><p>Same showroom. Real-time rendering and the Eevee intro, side by side.</p></div><button id="replayBoth" disabled>Replay both</button></header>
+<div class="grid"><section aria-labelledby="glbLabel"><h2 id="glbLabel">Real-time GLB</h2><div id="view" class="media" aria-label="Interactive 3D showroom"></div><div class="panel-footer"><div class="buttons"><button id="intro" disabled>Replay intro</button><button id="idle" disabled>Idle loop</button><button id="pause" disabled>Pause</button><button id="reset" disabled>Reset camera</button></div><div class="details"><span id="status" role="status">Loading showroom…</span><span>Drag to orbit · Scroll to inspect</span></div></div></section>
+<section aria-labelledby="videoLabel"><h2 id="videoLabel">Rendered Video</h2><div class="media"><video id="renderedVideo" src="./assets/F05_Assembly_Intro_1080p30.mp4" autoplay muted playsinline preload="auto" aria-label="F05 Assembly intro rendered in Eevee"></video></div><div class="panel-footer"><div class="buttons"><button id="videoReplay" disabled>Replay video</button></div><div class="details"><span id="videoStatus" role="status">Loading intro…</span><span>1920 × 1080 · 30 fps · 4 seconds</span></div></div></section></div>
+<p class="note">After the intro, the GLB continues into its idle animation; the video holds its final frame. Replay both resets the camera and starts both intros together.</p></main>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
+const view=document.querySelector('#view'),status=document.querySelector('#status');
+const video=document.querySelector('#renderedVideo'); video.muted=true; video.pause();
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setClearColor(0xe5e1da);renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.05;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;view.appendChild(renderer.domElement);
+const scene=new THREE.Scene();const pmrem=new THREE.PMREMGenerator(renderer);const room=new RoomEnvironment();scene.environment=pmrem.fromScene(room,.06).texture;scene.environmentIntensity=.6;room.dispose();pmrem.dispose();
+scene.add(new THREE.HemisphereLight(0xe6f2ff,0xbda58b,1.2));
+const key=new THREE.DirectionalLight(0xffefda,3.0);key.position.set(-5,12,6);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-12,right:12,top:12,bottom:-12,near:.5,far:40});key.shadow.normalBias=.025;key.shadow.bias=-.0001;scene.add(key);
+const fill=new THREE.DirectionalLight(0xe1edff,1.0);fill.position.set(8,7,-3);scene.add(fill);
+let camera,controls,mixer,actions,active,paused=false,initialCamera;const timer=new THREE.Timer();timer.connect(document);
+function resize(){renderer.setSize(view.clientWidth,view.clientHeight,false)}new ResizeObserver(resize).observe(view);
+function play(name){mixer.stopAllAction();active=name;const a=actions[name];a.reset();a.enabled=true;a.setEffectiveWeight(1);a.setEffectiveTimeScale(1);a.clampWhenFinished=name==='Intro';a.setLoop(name==='Intro'?THREE.LoopOnce:THREE.LoopRepeat,Infinity);a.play();paused=false;document.querySelector('#pause').textContent='Pause';mixer.update(0)}
+const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+try{
+ const gltf=await loader.loadAsync('./assets/Tosolini_Showroom_Desktop.glb');scene.add(gltf.scene);gltf.scene.updateMatrixWorld(true);
+ gltf.scene.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;/* Source scan and hologram alpha are kept. */}});
+ const original=gltf.cameras[0];if(!original)throw Error('Missing overview camera');camera=original.clone();original.matrixWorld.decompose(camera.position,camera.quaternion,camera.scale);camera.updateMatrixWorld();initialCamera=camera.clone();
+ controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;const direction=camera.getWorldDirection(new THREE.Vector3());controls.target.copy(camera.position).addScaledVector(direction,30);controls.update();controls.saveState();
+ mixer=new THREE.AnimationMixer(gltf.scene);actions=Object.fromEntries(gltf.animations.map(c=>[c.name,mixer.clipAction(c)]));mixer.addEventListener('finished',e=>{if(!paused&&e.action===actions.Intro)play('Idle_Loop')});
+ document.querySelectorAll('button').forEach(b=>b.disabled=false);document.querySelector('#intro').onclick=()=>play('Intro');document.querySelector('#idle').onclick=()=>play('Idle_Loop');document.querySelector('#pause').onclick=()=>{paused=!paused;document.querySelector('#pause').textContent=paused?'Resume':'Pause'};document.querySelector('#reset').onclick=()=>controls.reset();
+ window.review={gltf,scene,renderer,get camera(){return camera},get active(){return active},play,seek(name,time){play(name);paused=true;mixer.update(time);scene.updateMatrixWorld(true);return {name,time}},stats(){return {clips:gltf.animations.map(c=>({name:c.name,duration:c.duration,tracks:c.tracks.length})),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,meshes:gltf.scene.getObjectsByProperty('isMesh',true).length}},snapshot(){scene.updateMatrixWorld(true);return gltf.scene.getObjectsByProperty('isMesh',true).map(o=>({name:o.name,matrix:o.matrixWorld.toArray(),weights:o.morphTargetInfluences||[],bones:o.skeleton?Array.from(o.skeleton.boneMatrices):[]}))}};
+ const replayBoth=()=>{controls.reset();play('Intro');video.currentTime=0;video.play().catch(()=>{document.querySelector('#videoStatus').textContent='Use Replay both to start playback';});};
+ document.querySelector('#replayBoth').onclick=replayBoth;
+ document.querySelector('#videoReplay').onclick=()=>{video.currentTime=0;video.play();};
+ video.addEventListener('ended',()=>document.querySelector('#videoStatus').textContent='Intro complete · Final frame');
+ video.addEventListener('playing',()=>document.querySelector('#videoStatus').textContent='Intro · Playing');
+ if(video.readyState<3)await new Promise((resolve,reject)=>{video.addEventListener('canplay',resolve,{once:true});video.addEventListener('error',()=>reject(Error('The local rendered video could not be loaded')),{once:true});});
+ replayBoth();resize();
+}catch(e){status.textContent='Could not load model: '+e.message;console.error(e)}
+renderer.setAnimationLoop(()=>{timer.update();const dt=Math.min(timer.getDelta(),.05);if(mixer&&!paused)mixer.update(dt);if(controls)controls.update();if(camera){renderer.render(scene,camera);status.textContent=`${active} · ${actions[active].time.toFixed(1)} s · ${paused?'Paused':'Playing'}`}});
+</script></body></html>

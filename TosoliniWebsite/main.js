@@ -20,7 +20,7 @@ const narrow = matchMedia('(max-width: 767px)');
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 let renderer, effects, camera, mixer, clips, poses, model, sampledCenters, idleAction;
-let activeIndex = 0, transition = null, sceneVisible = true, ready = false;
+let activeIndex = 0, sceneVisible = true, ready = false;
 let renderSettings;
 const timer = new THREE.Timer();
 timer.connect(document);
@@ -134,34 +134,27 @@ function buildPoses(original, centers) {
   ];
 }
 
-function transitionTo(index, direct = false) {
+function cutTo(index) {
   if (!poses || !camera) return;
-  if (direct || reducedMotion.matches) {
-    camera.position.copy(poses[index].position);
-    camera.quaternion.copy(poses[index].quaternion);
-    transition = null;
-    return;
-  }
-  transition = {
-    stops: [
-      { position: camera.position.clone(), quaternion: camera.quaternion.clone() },
-      poses[index],
-    ],
-    start: performance.now(),
-    leg: 1050,
-  };
+  camera.position.copy(poses[index].position);
+  camera.quaternion.copy(poses[index].quaternion);
 }
 
-function updateCamera(now) {
-  if (!transition) return;
-  const { stops, start, leg } = transition;
-  const progress = clamp((now - start) / leg, 0, stops.length - 1);
-  const part = Math.min(stops.length - 2, Math.floor(progress));
-  const fraction = progress >= stops.length - 1 ? 1 : progress - part;
+function scrubCamera() {
+  if (!poses || !camera) return;
+  if (reducedMotion.matches) { cutTo(activeIndex); return; }
+  const header = document.querySelector('.site-header').offsetHeight;
+  // Use the same section-top anchors as navigation. No clock or catch-up tween:
+  // a given scroll offset always produces exactly the same camera framing.
+  const stops = chapters.map(chapter => chapter.getBoundingClientRect().top + scrollY - header);
+  let part = 0;
+  while (part < stops.length - 2 && scrollY >= stops[part + 1]) part++;
+  const fraction = clamp((scrollY - stops[part]) / Math.max(1, stops[part + 1] - stops[part]), 0, 1);
   const eased = fraction * fraction * (3 - 2 * fraction);
-  camera.position.lerpVectors(stops[part].position, stops[part + 1].position, eased);
-  camera.quaternion.slerpQuaternions(stops[part].quaternion, stops[part + 1].quaternion, eased);
-  if (progress >= stops.length - 1) transition = null;
+  camera.position.lerpVectors(poses[part].position, poses[part + 1].position, eased);
+  // The saved states encode their look-at direction as a quaternion. Slerping
+  // that orientation preserves both endpoint framings without inventing targets.
+  camera.quaternion.slerpQuaternions(poses[part].quaternion, poses[part + 1].quaternion, eased);
 }
 
 function setActive(index, direct = false) {
@@ -173,7 +166,7 @@ function setActive(index, direct = false) {
     if (link.dataset.chapter === chapters[index].id) link.setAttribute('aria-current', 'step');
     else link.removeAttribute('aria-current');
   });
-  transitionTo(index, direct);
+  if (direct) cutTo(index);
 }
 
 function updateScroll() {
@@ -186,6 +179,7 @@ function updateScroll() {
     if (delta < distance) { distance = delta; closest = index; }
   });
   setActive(closest);
+  scrubCamera();
   const bounds = experience.getBoundingClientRect();
   const length = Math.max(1, bounds.height - (innerHeight - document.querySelector('.site-header').offsetHeight));
   const progress = clamp(-bounds.top / length, 0, 1);
@@ -222,6 +216,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 addEventListener('scroll', updateScroll, { passive: true });
 addEventListener('resize', updateScroll, { passive: true });
+reducedMotion.addEventListener('change', updateScroll);
 addEventListener('popstate', () => location.hash && jumpTo(location.hash.slice(1), false));
 updateScroll();
 
@@ -330,11 +325,9 @@ try {
     effects.resize();
     if (ready && narrow.matches !== resize.wasNarrow) {
       poses = buildPoses(original, sampledCenters);
-      camera.position.copy(poses[activeIndex].position);
-      camera.quaternion.copy(poses[activeIndex].quaternion);
-      transition = null;
     }
     resize.wasNarrow = narrow.matches;
+    if (ready) scrubCamera();
   }
   new ResizeObserver(resize).observe(view);
   narrow.addEventListener('change', resize);
@@ -345,12 +338,11 @@ try {
   if (location.hash) jumpTo(location.hash.slice(1), false);
   else updateScroll();
 
-  renderer.setAnimationLoop(now => {
+  renderer.setAnimationLoop(() => {
     timer.update();
     const dt = Math.min(timer.getDelta(), .25);
     if (!sceneVisible || document.hidden) return;
     mixer.update(dt);
-    updateCamera(now);
     effects.render(scene, camera);
   });
 } catch (error) {

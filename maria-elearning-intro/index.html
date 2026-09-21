@@ -5,110 +5,271 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hi, I'm Maria</title>
 <style>
-  :root{
-    --bg:#03020b;
-    --line:rgba(255,255,255,.13);
-    --text:#f7f6fb;
-    --muted:rgba(247,246,251,.62);
-    --accent:#d35cff;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-  body{overflow:hidden}
-  .page{height:100vh;display:grid;grid-template-rows:auto 1fr}
-  header{padding:22px 28px 18px;border-bottom:1px solid var(--line);display:flex;align-items:end;justify-content:space-between;gap:20px}
-  .intro h1{font-size:clamp(28px,4vw,56px);line-height:.95;margin:0;font-weight:650;letter-spacing:-.05em}
-  .intro p{margin:10px 0 0;color:var(--muted);font-size:14px;letter-spacing:.01em}
-  .hint{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em;white-space:nowrap}
-
-  .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;min-height:0}
-  .panel{position:relative;overflow:hidden;border-right:1px solid var(--line);border-bottom:1px solid var(--line);isolation:isolate;cursor:pointer}
-  .panel:nth-child(2n){border-right:none}
-  .panel:nth-child(n+3){border-bottom:none}
-
-  .idle,.reveal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease, transform .4s ease}
-  .idle{z-index:3;text-align:center;padding:20px}
-  .idle-inner{display:grid;gap:10px;place-items:center}
-  .num{font-size:11px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
-  .icon{width:54px;height:54px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);border-radius:50%;font-size:22px;font-weight:500}
-  .title{font-size:clamp(18px,2vw,28px);font-weight:520;letter-spacing:-.025em}
-
-  .reveal{z-index:2;opacity:0;padding:clamp(24px,4vw,54px);align-items:flex-start;justify-content:flex-start;background:
-      radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(211,92,255,.28), transparent 26%),
-      linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,0));
-  }
-  .reveal .copy{max-width:600px;align-self:flex-end}
-  .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);margin-bottom:12px}
-  .reveal h2{font-size:clamp(24px,3.8vw,56px);line-height:.96;letter-spacing:-.05em;margin:0 0 16px}
-  .reveal p{font-size:clamp(13px,1.35vw,18px);line-height:1.48;color:rgba(255,255,255,.84);margin:0;max-width:52ch}
-  .keywords{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
-  .keywords span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 9px;color:rgba(255,255,255,.68)}
-
-  .panel:hover .idle,.panel:focus-visible .idle,.panel.active .idle{opacity:0;transform:scale(.97)}
-  .panel:hover .reveal,.panel:focus-visible .reveal,.panel.active .reveal{opacity:1}
-
-  .photo .reveal{padding:0;background:#05040d}
-  .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);opacity:.88;transform:scale(1.02);transition:transform .8s ease,filter .6s ease,opacity .6s ease}
-  .photo:hover img,.photo.active img,.photo:focus-visible img{filter:grayscale(0);opacity:1;transform:scale(1.06)}
-  .photo-label{position:absolute;left:22px;bottom:20px;z-index:2;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:rgba(3,2,11,.58);backdrop-filter:blur(8px);padding:8px 10px;border:1px solid rgba(255,255,255,.18)}
-
-  @media (max-width:760px){
-    body{overflow:auto}
-    .page{height:auto;min-height:100vh}
-    header{align-items:flex-start;flex-direction:column}
-    .hint{white-space:normal}
-    .grid{grid-template-columns:1fr;grid-template-rows:none}
-    .panel{min-height:58vh;border-right:none!important;border-bottom:1px solid var(--line)!important}
-    .panel:last-child{border-bottom:none!important}
-    .reveal{opacity:0}
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    *,*:before,*:after{transition:none!important}
-  }
+:root{
+  --bg:#050505;
+  --fg:#f6f6f6;
+  --muted:#a8a8a8;
+  --line:#2a2a2a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+a{color:inherit}
+.hero{
+  min-height:42vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:56px 24px 44px;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(2.2rem,7vw,5rem);
+  line-height:.95;
+  letter-spacing:-.05em;
+  font-weight:650;
+}
+.hero p{
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:clamp(.95rem,2vw,1.05rem);
+}
+.section{
+  position:relative;
+  min-height:58vh;
+  border-top:1px solid var(--line);
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  padding:32px;
+}
+.section:last-child{border-bottom:1px solid var(--line)}
+.front,
+.reveal{
+  grid-area:1/1;
+  width:min(900px,100%);
+  transition:opacity .35s ease, transform .35s ease;
+}
+.front{
+  text-align:center;
+  z-index:2;
+}
+.num{
+  font-size:.85rem;
+  letter-spacing:.16em;
+  color:#777;
+  margin-bottom:14px;
+}
+.title{
+  margin:0;
+  font-size:clamp(2rem,8vw,5.5rem);
+  letter-spacing:-.055em;
+  font-weight:600;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(10px);
+  z-index:3;
+}
+.reveal p{
+  margin:0 auto;
+  max-width:760px;
+  font-size:clamp(1rem,2.5vw,1.28rem);
+  line-height:1.65;
+  color:#e6e6e6;
+}
+.section:hover .front,
+.section:focus-within .front,
+.section.is-open .front{
+  opacity:0;
+  transform:translateY(-8px);
+}
+.section:hover .reveal,
+.section:focus-within .reveal,
+.section.is-open .reveal{
+  opacity:1;
+  transform:translateY(0);
+}
+.section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  background:radial-gradient(circle 220px at var(--x,50%) var(--y,50%), rgba(142,96,255,.16), rgba(255,75,190,.08) 35%, transparent 70%);
+  transition:opacity .25s ease;
+}
+.section:hover::before,
+.section.is-open::before{opacity:1}
+.xr-wrap{
+  position:relative;
+  display:inline-block;
+}
+.xr-link{
+  text-decoration:underline;
+  text-underline-offset:3px;
+  cursor:pointer;
+  position:relative;
+}
+.xr-tip{
+  position:absolute;
+  z-index:20;
+  width:min(310px,80vw);
+  padding:12px 14px;
+  border:1px solid #3b3b3b;
+  background:#111;
+  color:#efefef;
+  border-radius:10px;
+  font-size:.9rem;
+  line-height:1.45;
+  box-shadow:0 12px 32px rgba(0,0,0,.35);
+  display:none;
+  left:50%;
+  top:calc(100% + 10px);
+  transform:translateX(-50%);
+}
+.xr-tip::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-6px;
+  width:10px;
+  height:10px;
+  background:#111;
+  border-left:1px solid #3b3b3b;
+  border-top:1px solid #3b3b3b;
+  transform:translateX(-50%) rotate(45deg);
+}
+.xr-tip.show{display:block}
+.lab-link{
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.photo-wrap{
+  width:min(900px,100%);
+  height:min(62vh,650px);
+  overflow:hidden;
+  border-radius:2px;
+}
+.photo-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.tap-hint{
+  display:none;
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:.75rem;
+  color:#666;
+}
+@media (hover:none), (max-width:760px){
+  .hero{min-height:32vh;padding:42px 20px 30px}
+  .section{min-height:52vh;padding:26px 20px}
+  .section::before{display:none}
+  .tap-hint{display:block}
+  .reveal p{font-size:1rem;line-height:1.6}
+  .photo-wrap{height:58vh}
+}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important}
+}
 </style>
 </head>
 <body>
-<div class="page">
-  <header>
-    <div class="intro">
-      <h1>Hi, I’m Maria.</h1>
-      <p>Move your mouse around, or click a section, to learn a little more about me.</p>
+<header class="hero">
+  <h1>Hi, I’m Maria.</h1>
+  <p>Move, tap, or click to learn a little more about me.</p>
+</header>
+
+<section class="section" tabindex="0">
+  <div class="front">
+    <div class="num">01</div>
+    <h2 class="title">About Me</h2>
+  </div>
+  <div class="reveal">
+    <p>I’m Maria, and I use she/her pronouns. I’m originally from Colombia and now live in Seattle. Outside of work, I enjoy outdoor activities, live music, and hanging out with friends.</p>
+  </div>
+  <div class="tap-hint">Tap to reveal</div>
+</section>
+
+<section class="section" tabindex="0">
+  <div class="front">
+    <div class="num">02</div>
+    <h2 class="title">My Path</h2>
+  </div>
+  <div class="reveal">
+    <p>My background started in photography and video production, and from there I moved into interactive design. While I was in school, I took a VR class that completely changed the direction of my work. Since then, I’ve worked in <span class="xr-wrap"><span class="xr-link" role="button" tabindex="0" aria-expanded="false">XR and immersive technology</span><span class="xr-tip" role="tooltip">XR, or Extended Reality, is an umbrella term for immersive technologies such as virtual reality, augmented reality, and mixed reality.</span></span> in both industry and higher education. Today, I’m the Faculty Lead of the <a class="lab-link" href="https://www.bellevuecollege.edu/xrlab/" target="_blank" rel="noopener">XR Lab at Bellevue College</a> and teach courses related to XR development.</p>
+  </div>
+  <div class="tap-hint">Tap to reveal</div>
+</section>
+
+<section class="section" tabindex="0">
+  <div class="front">
+    <div class="num">03</div>
+    <h2 class="title">Why eLearning</h2>
+  </div>
+  <div class="reveal">
+    <p>Most of my experience has been on the technical side of XR, but my work has become increasingly focused on education. I’m interested in understanding how instructional design can help us use technology more intentionally. I see a lot of potential in the overlap between XR and eLearning, especially when immersive experiences are designed around learner needs, accessibility, and meaningful learning outcomes.</p>
+  </div>
+  <div class="tap-hint">Tap to reveal</div>
+</section>
+
+<section class="section" tabindex="0">
+  <div class="front">
+    <div class="num">04</div>
+    <h2 class="title">A Face to the Name</h2>
+  </div>
+  <div class="reveal">
+    <div class="photo-wrap">
+      <img src="maria.JPG" alt="Portrait of Maria outdoors" />
     </div>
-    <div class="hint">Week 1 · Designing Effective eLearning</div>
-  </header>
+  </div>
+  <div class="tap-hint">Tap to reveal</div>
+</section>
 
-  <main class="grid">
-    <section class="panel" tabindex="0" aria-label="About me">
-      <div class="idle"><div class="idle-inner"><div class="num">01</div><div class="icon">M</div><div class="title">About me</div></div></div>
-      <div class="reveal"><div class="copy"><div class="eyebrow">01 · About me</div><h2>Colombia to Seattle.</h2><p>I’m Maria, and I use she/her pronouns. I’m originally from Colombia and now live in Seattle. Outside of work, I love climbing, outdoor adventures, and live music.</p><div class="keywords"><span>Colombia</span><span>Seattle</span><span>She / Her</span><span>Climbing</span><span>Live Music</span></div></div></div>
-    </section>
-
-    <section class="panel" tabindex="0" aria-label="My path">
-      <div class="idle"><div class="idle-inner"><div class="num">02</div><div class="icon">↗</div><div class="title">My path</div></div></div>
-      <div class="reveal"><div class="copy"><div class="eyebrow">02 · My path</div><h2>From images to immersive experiences.</h2><p>I started in photography and video production, then moved into interactive design. A VR class pulled me into immersive technology, and since then I’ve worked in XR in both industry and higher education. Today I lead an XR Lab and teach XR development.</p><div class="keywords"><span>Photography</span><span>Video</span><span>Interactive Design</span><span>VR</span><span>XR</span></div></div></div>
-    </section>
-
-    <section class="panel" tabindex="0" aria-label="Why eLearning">
-      <div class="idle"><div class="idle-inner"><div class="num">03</div><div class="icon">◎</div><div class="title">Why eLearning</div></div></div>
-      <div class="reveal"><div class="copy"><div class="eyebrow">03 · Why eLearning</div><h2>Technology is only useful when it supports learning.</h2><p>I understand the technical side of XR well, but I want to deepen my understanding of instructional design. I’m especially interested in the overlap between XR and eLearning, and in designing experiences around learner needs, accessibility, and meaningful outcomes.</p><div class="keywords"><span>Instructional Design</span><span>XR + eLearning</span><span>Accessibility</span><span>Learner Needs</span></div></div></div>
-    </section>
-
-    <section class="panel photo" tabindex="0" aria-label="Photo of Maria">
-      <div class="idle"><div class="idle-inner"><div class="num">04</div><div class="icon">◌</div><div class="title">A face to the name</div></div></div>
-      <div class="reveal"><img src="maria.png" alt="Maria outdoors beside a river" /><div class="photo-label">Hi, this is me.</div></div>
-    </section>
-  </main>
-</div>
 <script>
-  document.querySelectorAll('.panel').forEach(panel => {
-    panel.addEventListener('pointermove', e => {
-      const r = panel.getBoundingClientRect();
-      panel.style.setProperty('--mx', `${((e.clientX-r.left)/r.width)*100}%`);
-      panel.style.setProperty('--my', `${((e.clientY-r.top)/r.height)*100}%`);
-    });
-    panel.addEventListener('click', () => panel.classList.toggle('active'));
+const sections = document.querySelectorAll('.section');
+sections.forEach(section => {
+  section.addEventListener('pointermove', e => {
+    const r = section.getBoundingClientRect();
+    section.style.setProperty('--x', `${e.clientX-r.left}px`);
+    section.style.setProperty('--y', `${e.clientY-r.top}px`);
   });
+  section.addEventListener('click', e => {
+    if (e.target.closest('a') || e.target.closest('.xr-link')) return;
+    if (window.matchMedia('(hover:none)').matches || window.innerWidth <= 760) {
+      section.classList.toggle('is-open');
+    }
+  });
+});
+
+const xr = document.querySelector('.xr-link');
+const tip = document.querySelector('.xr-tip');
+function toggleTip(show){
+  const shouldShow = typeof show === 'boolean' ? show : !tip.classList.contains('show');
+  tip.classList.toggle('show', shouldShow);
+  xr.setAttribute('aria-expanded', shouldShow ? 'true':'false');
+}
+xr.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); toggleTip(); });
+xr.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTip(); }
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.xr-link') && !e.target.closest('.xr-tip')) toggleTip(false);
+});
+window.addEventListener('resize', () => { if (tip.classList.contains('show')) positionTip(); });
 </script>
 </body>
 </html>

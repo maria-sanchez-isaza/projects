@@ -1,0 +1,293 @@
+{
+  "posts_exported": 353,
+  "images_copied": 526,
+  "other_assets_copied": 3,
+  "posts_with_missing_images": [
+    {
+      "id": "81",
+      "title": "Units &amp; Conversions in your PocketMod",
+      "missing": [
+        "http://www.creativetechs.com/iq/tip_images/PocketMod-Folding.gif"
+      ]
+    },
+    {
+      "id": "2618",
+      "title": "Our 8 day trip to Sicily. Sixth day: Gole di Alcantara and Taormina",
+      "missing": [
+        "http://commons.wikimedia.org/wiki/File:Gola_dell_Alcantara_Ansicht.jpg"
+      ]
+    }
+  ],
+  "posts_with_missing_other_assets": [
+    {
+      "id": "6434",
+      "title": "Finding an English-speaking doctor in Florence",
+      "missing": [
+        "https://it.usembassy.gov/wp-content/uploads/sites/67/2016/07/ACS-Doctors-Florence.pdf"
+      ]
+    }
+  ],
+  "unsupported_embedded_content": [
+    {
+      "id": "4",
+      "title": "Our new eBook Italy From The Inside is HERE!",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Where to find the best online maps of Italy (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Italian hand gestures explained (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "A Pedestrian's Life in Italy (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "38",
+      "title": "Venice Carnival 2007 (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "59",
+      "title": "How to make an Italian coffee (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "77",
+      "title": "Goodbye in Italian (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "85",
+      "title": "Pizzeria 'Da Mario' (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "86",
+      "title": "Italy Safety Tips for Kids (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "87",
+      "title": "Italian for kids: Colors (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "92",
+      "title": "Italian for kids: Numbers (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "93",
+      "title": "Italian for Kids: The Playground (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "100",
+      "title": "Happy Birthday in Italian (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "101",
+      "title": "Parmigiano Reggiano (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "105",
+      "title": "Winter in Friuli Venezia Giulia (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "114",
+      "title": "Trentino: Traditional Flavors (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "116",
+      "title": "Podcast #15 - Learn Italian with free podcasts",
+      "types": [
+        "WordPress audio shortcode"
+      ]
+    },
+    {
+      "id": "121",
+      "title": "Italian for Kids: Astronomy (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "124",
+      "title": "Pasta-Fest (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "127",
+      "title": "Italian for Kids: Cars (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "130",
+      "title": "Italian for Kids: The School (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "132",
+      "title": "Italian for Kids: Christmas (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "146",
+      "title": "Italian for Kids: Grocery Shopping (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "718",
+      "title": "Italian for Kids: The Human Body (video)",
+      "types": [
+        "embed embed",
+        "object embed"
+      ]
+    },
+    {
+      "id": "852",
+      "title": "Italian for Kids: How to play Bocce (video)",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "916",
+      "title": "Our first Kindle eBook - Tips for the Table: All You Need to Know When Dining Out in Italy",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "932",
+      "title": "Italian for Kids: the Months of the Year (video)",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "1634",
+      "title": "Podcast #17 - The city of Agrigento in Sicily",
+      "types": [
+        "WordPress audio shortcode"
+      ]
+    },
+    {
+      "id": "2080",
+      "title": "Announcing our new Kindle eBook - Tips for Transportation: All You Need to Know to Get Around in Italy.",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "2106",
+      "title": "Our paperless trip to Rome",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "4623",
+      "title": "When history comes alive: Triest in Roman times",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "5618",
+      "title": "An amazing Christmas light show in Trieste",
+      "types": [
+        "iframe embed"
+      ]
+    },
+    {
+      "id": "5663",
+      "title": "Scusate il ritardo",
+      "types": [
+        "WordPress video shortcode"
+      ]
+    },
+    {
+      "id": "5959",
+      "title": "Are you ready to be amazed?",
+      "types": [
+        "iframe embed"
+      ]
+    }
+  ]
+}

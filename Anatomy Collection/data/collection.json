@@ -1,0 +1,495 @@
+{
+  "collectionUrl": "https://sketchfab.com/bcxrlab/collections/anatomy-ae6b494a53204254928d190251ac8c43",
+  "models": [
+    {
+      "id": "cardio-pulmonary",
+      "kind": "model",
+      "title": "Cardio-Pulmonary Model",
+      "sketchfabName": "Reza Anatomy Student Model Cardio Pulmonary",
+      "sketchfab": "08c96b0658b7429897540548f5ab078c",
+      "viewerUrl": "https://sketchfab.com/3d-models/reza-anatomy-student-model-cardio-pulmonary-08c96b0658b7429897540548f5ab078c",
+      "thumbnail": "thumbs/cardio-pulmonary.jpg",
+      "description": "Reza Anatomy Student Model Cardio Pulmonary",
+      "tags": [
+        "heart",
+        "lungs",
+        "lung",
+        "pulmonary",
+        "cardio",
+        "cardiovascular",
+        "reza",
+        "respiratory"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "lungs",
+      "kind": "model",
+      "title": "Lungs",
+      "sketchfabName": "Lungs",
+      "sketchfab": "fa3e91bf983d4b95873982863a3ecace",
+      "viewerUrl": "https://sketchfab.com/3d-models/lungs-fa3e91bf983d4b95873982863a3ecace",
+      "thumbnail": "thumbs/lungs.jpg",
+      "description": "Bellevue College Anatomy Lungs Model",
+      "tags": [
+        "lung",
+        "lungs",
+        "pulmonary",
+        "respiratory"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "kidney-interior",
+      "kind": "model",
+      "title": "Kidney Interior",
+      "sketchfabName": "Kidney Interior",
+      "sketchfab": "f19faa8786924308bf50e4fd7a5facc4",
+      "viewerUrl": "https://sketchfab.com/3d-models/kidney-interior-f19faa8786924308bf50e4fd7a5facc4",
+      "thumbnail": "thumbs/kidney-interior.jpg",
+      "description": "Bellevue College Anatomy capstone project - Kidney Interior",
+      "tags": [
+        "kidney",
+        "renal",
+        "nephron"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "single-cell",
+      "kind": "model",
+      "title": "Single Cell Interior",
+      "sketchfabName": "Single Cell interior",
+      "sketchfab": "b77763d3c403492ab4c82f1ca425a63b",
+      "viewerUrl": "https://sketchfab.com/3d-models/single-cell-interior-b77763d3c403492ab4c82f1ca425a63b",
+      "thumbnail": "thumbs/single-cell.jpg",
+      "description": "Bellevue College Anatomy class microbiology project - single cell interior",
+      "tags": [
+        "cell",
+        "cells",
+        "microbiology",
+        "organelle",
+        "biology"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2025"
+    },
+    {
+      "id": "brain",
+      "kind": "model",
+      "title": "Brain Anatomy Model",
+      "sketchfabName": "Brain Anatomy Model",
+      "sketchfab": "acf2128c919a4a15975e5605258356d9",
+      "viewerUrl": "https://sketchfab.com/3d-models/brain-anatomy-model-acf2128c919a4a15975e5605258356d9",
+      "thumbnail": "thumbs/brain.jpg",
+      "description": "Bellevue College Anatomy Student project - lung reconstruction",
+      "tags": [
+        "brain",
+        "cerebral"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2025"
+    },
+    {
+      "id": "small-skeleton",
+      "kind": "model",
+      "title": "Small Skeleton Model",
+      "sketchfabName": "Bellevue College Small Skeleton Model",
+      "sketchfab": "a665af49cecb427294b195b5ad7d5328",
+      "viewerUrl": "https://sketchfab.com/3d-models/bellevue-college-small-skeleton-model-a665af49cecb427294b195b5ad7d5328",
+      "thumbnail": "thumbs/small-skeleton.jpg",
+      "description": "Bellevue College Small Skeleton Model - student anatomy project",
+      "tags": [
+        "skeleton",
+        "bone",
+        "bones",
+        "skull"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "eyeball",
+      "kind": "model",
+      "title": "Eyeball Interior",
+      "sketchfabName": "Bellevue College Eyeball Interior",
+      "sketchfab": "33d38ea12fd04baf89a4e756cf556ee7",
+      "viewerUrl": "https://sketchfab.com/3d-models/bellevue-college-eyeball-interior-33d38ea12fd04baf89a4e756cf556ee7",
+      "thumbnail": "thumbs/eyeball.jpg",
+      "description": "Bellevue College Eyeball Interior anatomy class, student model",
+      "tags": [
+        "eye",
+        "eyeball",
+        "ocular",
+        "vision"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2025"
+    },
+    {
+      "id": "blood-cells",
+      "kind": "model",
+      "title": "Red and White Blood Cells",
+      "sketchfabName": "Bellevue College Red & White Blood Cells",
+      "sketchfab": "700289c29ddc4afdaaeb7562acf00884",
+      "viewerUrl": "https://sketchfab.com/3d-models/bellevue-college-red-white-blood-cells-700289c29ddc4afdaaeb7562acf00884",
+      "thumbnail": "thumbs/blood-cells.jpg",
+      "description": "Bellevue College Red & White Blood Cells Anatomy model, student project",
+      "tags": [
+        "blood",
+        "cell",
+        "cells",
+        "erythrocyte",
+        "leukocyte",
+        "rbc",
+        "wbc"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2025"
+    },
+    {
+      "id": "aluminum-skeleton",
+      "kind": "model",
+      "title": "Aluminum Skeleton",
+      "sketchfabName": "Reza Aluminum Skeleton Sept 2025",
+      "sketchfab": "39c6fc9f18e244acbfac0557cea17ded",
+      "viewerUrl": "https://sketchfab.com/3d-models/reza-aluminum-skeleton-sept-2025-39c6fc9f18e244acbfac0557cea17ded",
+      "thumbnail": "thumbs/aluminum-skeleton.jpg",
+      "description": "Reza Student Project: Aluminum Skeleton Sept 2025",
+      "tags": [
+        "skeleton",
+        "bone",
+        "bones",
+        "aluminum",
+        "aluminium",
+        "reza"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "color-patches-skeleton",
+      "kind": "model",
+      "title": "Color Patches Skeleton",
+      "sketchfabName": "Reza Color Patches Skeleton Sept 2025",
+      "sketchfab": "63acd119e86843df9a771953a5c6165a",
+      "viewerUrl": "https://sketchfab.com/3d-models/reza-color-patches-skeleton-sept-2025-63acd119e86843df9a771953a5c6165a",
+      "thumbnail": "thumbs/color-patches-skeleton.jpg",
+      "description": "Reza Anatomy Class Color Patches Skeleton Sept 2025",
+      "tags": [
+        "skeleton",
+        "bone",
+        "bones",
+        "reza"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "half-muscle-skeleton",
+      "kind": "model",
+      "title": "Half Muscle Skeleton",
+      "sketchfabName": "Half Muscle Skeleton",
+      "sketchfab": "553ca5628e5240a3a7a086038939c06c",
+      "viewerUrl": "https://sketchfab.com/3d-models/half-muscle-skeleton-553ca5628e5240a3a7a086038939c06c",
+      "thumbnail": "thumbs/half-muscle-skeleton.jpg",
+      "description": "The half muscle skeleton is a student anatomy project showing the human skeletal system along with the muscular system",
+      "tags": [
+        "skeleton",
+        "muscle",
+        "muscles",
+        "muscular",
+        "bone",
+        "bones"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "flat-back-skeleton",
+      "kind": "model",
+      "title": "Flat Back Skeleton",
+      "sketchfabName": "Flat Back Skeleton horizontal V2",
+      "sketchfab": "fc3b654444ee421c9610c6217f39dcab",
+      "viewerUrl": "https://sketchfab.com/3d-models/flat-back-skeleton-horizontal-v2-fc3b654444ee421c9610c6217f39dcab",
+      "thumbnail": "thumbs/flat-back-skeleton.jpg",
+      "description": "This Flat Back V2 project was created by students for a human anatomy class.",
+      "tags": [
+        "skeleton",
+        "spine",
+        "back",
+        "bone",
+        "bones"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "heart-scan",
+      "kind": "model",
+      "title": "Heart Model Scan",
+      "sketchfabName": "Heart Model Scan - OCT 2025",
+      "sketchfab": "8dae68bd5755447f900427110776adee",
+      "viewerUrl": "https://sketchfab.com/3d-models/heart-model-scan-oct-2025-8dae68bd5755447f900427110776adee",
+      "thumbnail": "thumbs/heart-scan.jpg",
+      "description": "Heart Model Scan - OCT 2025. Bellevue College student anatomy diagram, showing oxygenated (red) and de-oxygenated blood flows.",
+      "tags": [
+        "heart",
+        "cardiac",
+        "blood",
+        "oxygen",
+        "oxygenated"
+      ],
+      "related": [],
+      "license": "CC Attribution-NonCommercial",
+      "year": "2025"
+    },
+    {
+      "id": "multicolor-skeleton",
+      "kind": "model",
+      "title": "Multicolor Flat Skeleton",
+      "sketchfabName": "Multicolor Flat Skeleton OCT2025",
+      "sketchfab": "e2a2fe453a504fd2adec4c6abcc802a1",
+      "viewerUrl": "https://sketchfab.com/3d-models/multicolor-flat-skeleton-oct2025-e2a2fe453a504fd2adec4c6abcc802a1",
+      "thumbnail": "thumbs/multicolor-skeleton.jpg",
+      "description": "Photogrammetry scan of a skeleton model, created by an anatomy class students at Bellevue College.",
+      "tags": [
+        "skeleton",
+        "bone",
+        "bones",
+        "photogrammetry"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2025"
+    },
+    {
+      "id": "reza-lungs",
+      "kind": "model",
+      "title": "Reza Lungs Model",
+      "sketchfabName": "Reza Lungs Model_OCT2025 ANNOTATED",
+      "sketchfab": "13c8cd9fcf654bec89d40d48de9f4202",
+      "viewerUrl": "https://sketchfab.com/3d-models/reza-lungs-model-oct2025-annotated-13c8cd9fcf654bec89d40d48de9f4202",
+      "thumbnail": "thumbs/reza-lungs.jpg",
+      "description": "Photogrammetry scan of a human lungs model, created by an anatomy class students at Bellevue College.",
+      "tags": [
+        "lung",
+        "lungs",
+        "pulmonary",
+        "respiratory",
+        "reza",
+        "annotated"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "copd",
+      "kind": "model",
+      "title": "COPD",
+      "sketchfabName": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "sketchfab": "e659d205ea244328bebc530d614866de",
+      "viewerUrl": "https://sketchfab.com/3d-models/chronic-obstructive-pulmonary-disease-copd-e659d205ea244328bebc530d614866de",
+      "thumbnail": "thumbs/copd.jpg",
+      "description": "Student model for an anatomy class, showing a healthy lung beside a lung affected by COPD.",
+      "tags": [
+        "copd",
+        "lung",
+        "lungs",
+        "pulmonary",
+        "respiratory",
+        "disease",
+        "emphysema",
+        "chronic obstructive pulmonary disease"
+      ],
+      "related": [
+        "smoking-emphysema"
+      ],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "liver-cirrhosis",
+      "kind": "model",
+      "title": "Liver Cirrhosis Interior",
+      "sketchfabName": "Liver Cirrhosis Interior DEC 2025",
+      "sketchfab": "1c8a976b7e2046cd87016ea3cc969b31",
+      "viewerUrl": "https://sketchfab.com/3d-models/liver-cirrhosis-interior-dec-2025-1c8a976b7e2046cd87016ea3cc969b31",
+      "thumbnail": "thumbs/liver-cirrhosis.jpg",
+      "description": "Anatomy model showing liver cirrhosis, student project.",
+      "tags": [
+        "liver",
+        "hepatic",
+        "cirrhosis",
+        "disease"
+      ],
+      "related": [
+        "stages-liver-damage"
+      ],
+      "license": "CC Attribution",
+      "year": "2025"
+    },
+    {
+      "id": "heart-1",
+      "kind": "model",
+      "title": "Heart 1",
+      "sketchfabName": "Heart1",
+      "sketchfab": "fc5c5ee47dee4eb38e3311ff093f8be5",
+      "viewerUrl": "https://sketchfab.com/3d-models/heart1-fc5c5ee47dee4eb38e3311ff093f8be5",
+      "thumbnail": "thumbs/heart-1.jpg",
+      "description": "The Heart is a muscular pump that circulates blood through the body, delivers oxygen and nutrients to tissues while removing carbon dioxide and metabolic waste. It maintains blood pressure and ensures continuous perfusion of organs essential for survival.",
+      "tags": [
+        "heart",
+        "cardiac",
+        "blood",
+        "oxygen"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2026"
+    },
+    {
+      "id": "digestive-tract",
+      "kind": "model",
+      "title": "Digestive Tract",
+      "sketchfabName": "Digestive tract BC XR Lab",
+      "sketchfab": "041b34b0d2be490789ae9243a3ea795b",
+      "viewerUrl": "https://sketchfab.com/3d-models/digestive-tract-bc-xr-lab-041b34b0d2be490789ae9243a3ea795b",
+      "thumbnail": "thumbs/digestive-tract.jpg",
+      "description": "The digestive tract is a long tube that breaks down the food we eat into smaller pieces the body can use. Digestion begins in the mouth and continues through the stomach and intestines. As food moves through the tract, nutrients are absorbed into the bloodstream. These nutrients provide energy and help the body grow and repair itself. Any leftover waste is removed from the body.",
+      "tags": [
+        "digestive",
+        "digestion",
+        "stomach",
+        "intestine",
+        "intestines",
+        "gi",
+        "gastrointestinal",
+        "mouth"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2026"
+    },
+    {
+      "id": "skeleton-1",
+      "kind": "model",
+      "title": "Skeleton Model 1",
+      "sketchfabName": "Skeleton_model 1",
+      "sketchfab": "0a0feff97aa44ffbb56311d3a8b6a295",
+      "viewerUrl": "https://sketchfab.com/3d-models/skeleton-model-1-0a0feff97aa44ffbb56311d3a8b6a295",
+      "thumbnail": "thumbs/skeleton-1.jpg",
+      "description": "Student skeleton model from a Bellevue College anatomy class.",
+      "tags": [
+        "skeleton",
+        "bone",
+        "bones",
+        "skeletal"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2026"
+    },
+    {
+      "id": "skeletal-2",
+      "kind": "model",
+      "title": "Skeletal Model 2",
+      "sketchfabName": "Skeletal Model_2",
+      "sketchfab": "9e94b95c4c364b519d9bff86947c5e75",
+      "viewerUrl": "https://sketchfab.com/3d-models/skeletal-model-2-9e94b95c4c364b519d9bff86947c5e75",
+      "thumbnail": "thumbs/skeletal-2.jpg",
+      "description": "Student skeleton model from a Bellevue College anatomy class.",
+      "tags": [
+        "skeleton",
+        "bone",
+        "bones",
+        "skeletal"
+      ],
+      "related": [],
+      "license": "",
+      "year": "2026"
+    },
+    {
+      "id": "heart-2",
+      "kind": "model",
+      "title": "Heart 2",
+      "sketchfabName": "Heart2",
+      "sketchfab": "56a4167d77a84ff9b45d6d2459b5a49e",
+      "viewerUrl": "https://sketchfab.com/3d-models/heart2-56a4167d77a84ff9b45d6d2459b5a49e",
+      "thumbnail": "thumbs/heart-2.jpg",
+      "description": "The Heart is a muscular pump that circulates blood through the body, delivers oxygen and nutrients to tissues while removing carbon dioxide and metabolic waste. It maintains blood pressure and ensures continuous perfusion of organs essential for survival.",
+      "tags": [
+        "heart",
+        "cardiac",
+        "blood",
+        "oxygen"
+      ],
+      "related": [],
+      "license": "CC Attribution",
+      "year": "2026"
+    }
+  ],
+  "animations": [
+    {
+      "id": "smoking-emphysema",
+      "kind": "animation",
+      "title": "Smoking and Emphysema Animation",
+      "embed": "https://www.youtube.com/embed/LfXkrmTFgTg?rel=0",
+      "viewerUrl": "https://www.youtube.com/watch?v=LfXkrmTFgTg",
+      "thumbnail": "thumbs/smoking-emphysema.jpg",
+      "description": "An animation showing how smoking damages the lungs and contributes to emphysema.",
+      "tags": [
+        "smoking",
+        "tobacco",
+        "emphysema",
+        "copd",
+        "lung",
+        "lungs",
+        "pulmonary",
+        "respiratory",
+        "disease"
+      ],
+      "related": [
+        "copd"
+      ],
+      "year": "2026"
+    },
+    {
+      "id": "stages-liver-damage",
+      "kind": "animation",
+      "title": "Stages of Liver Damage",
+      "embed": "https://www.youtube.com/embed/eUriq1sCeLc?rel=0",
+      "viewerUrl": "https://www.youtube.com/watch?v=eUriq1sCeLc",
+      "thumbnail": "thumbs/stages-liver-damage.jpg",
+      "description": "An animation explaining the stages of liver damage and the progression toward cirrhosis.",
+      "tags": [
+        "liver",
+        "hepatic",
+        "liver damage",
+        "cirrhosis",
+        "fibrosis",
+        "disease"
+      ],
+      "related": [
+        "liver-cirrhosis"
+      ],
+      "year": "2026"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Anatomy XR Collection · Bellevue College XR Lab</title>
+  <meta name="description" content="Student-created anatomy models and disease animations from Bellevue College anatomy classes, prepared with the XR Lab.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="#models">
+        <svg viewBox="0 0 46 46" aria-hidden="true">
+          <circle cx="23" cy="23" r="21.2" fill="none" stroke="#16315f" stroke-width="1.7"/>
+          <circle cx="23" cy="23" r="16.2" fill="#16315f"/>
+          <text x="23" y="29.2" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="700" fill="#fff">B</text>
+        </svg>
+        <span>
+          <span class="brand-name">BELLEVUE COLLEGE</span>
+          <span class="brand-sub">XR LAB</span>
+        </span>
+      </a>
+    </header>
+
+    <section class="hero">
+      <img class="ribcage" src="assets/hero-ribcage.png" alt="">
+
+      <h1>Anatomy XR Collection</h1>
+      <p class="lede">Student-created anatomy models and disease animations developed through a collaboration between Bellevue College anatomy students and the XR Lab. Students provide the research and content, while the XR Lab helps scan, create, and prepare the interactive resources. Explore!</p>
+
+      <form class="search" role="search" id="search-form">
+        <label class="sr-only" for="q">Search 3D models and animations</label>
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M15.2 15.2 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input id="q" type="search" placeholder="Search 3D models and animations..." autocomplete="off" enterkeyhint="search">
+        <span class="hint" aria-hidden="true">e.g. lungs, liver, COPD, kidney, heart...</span>
+      </form>
+
+      <div class="tabs" role="tablist" aria-label="Collection">
+        <button type="button" class="tab" id="tab-models" role="tab" aria-selected="true" aria-controls="grid">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 3.2 20.2 7.6v8.8L12 20.8 3.8 16.4V7.6L12 3.2z"/><path fill="none" stroke="currentColor" stroke-width="1.7" d="M12 12.1 20.2 7.6M12 12.1 3.8 7.6M12 12.1v8.7"/></svg>
+          Anatomy Models
+        </button>
+        <button type="button" class="tab" id="tab-animations" role="tab" aria-selected="false" aria-controls="grid" tabindex="-1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.4 6.1v11.8L18.6 12 8.4 6.1z"/></svg>
+          Animations
+        </button>
+      </div>
+    </section>
+
+    <section class="catalog" aria-labelledby="heading">
+      <h2 id="heading">Anatomy Models <span class="count">(A – Z)</span></h2>
+      <p id="cross" class="cross" hidden></p>
+      <p id="empty" class="empty" hidden></p>
+      <div id="grid" class="grid" role="tabpanel" aria-labelledby="tab-models"></div>
+    </section>
+
+    <footer>
+      <p>Bellevue College XR Lab · Models from the <a id="collection-link" href="https://sketchfab.com/bcxrlab/collections/anatomy-ae6b494a53204254928d190251ac8c43">bcxrlab Sketchfab collection</a></p>
+    </footer>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="backdrop" data-close></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" id="modal-close" data-close aria-label="Close">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js?v=8"></script>
+</body>
+</html>

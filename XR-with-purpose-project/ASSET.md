@@ -1,0 +1,4 @@
+Original asset generated with the built-in imagegen tool; saved as `dist/assets/faculty.png`.
+
+Prompt:
+Use case: photorealistic-natural. Asset type: transparent PNG photographic cutout for a university editorial motion graphic. One full-body middle-aged female college faculty member with short wavy hair and glasses, wearing a dark blazer, light shirt, trousers and simple shoes. Standing casually in three-quarter view facing slightly left, holding an open slim laptop at waist height, thoughtful friendly expression. Entire person and shoes in frame, close crop with small transparent margin. Black and white grayscale photography, tactile slightly grainy newspaper print quality, strong tonal contrast, clean cutout silhouette. Transparent background, no furniture, no floor, no shadow outside the silhouette, no text, no logos, no decorative shapes. This should look like a real photographic paper collage person, not an illustration.

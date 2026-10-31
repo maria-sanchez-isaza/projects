@@ -1,1 +1,18 @@
-{"playerStart":{"position":[-1.5,1.6,0.5],"rotationY":0}}
+{
+  "playerStart": {
+    "position": [
+      -4.287,
+      1.35,
+      -0.531
+    ],
+    "rotationY": -119.2
+  },
+  "AvisorPosition": {
+    "position": [
+      -1.619,
+      1.6,
+      0.314
+    ],
+    "rotationY": 84
+  }
+}

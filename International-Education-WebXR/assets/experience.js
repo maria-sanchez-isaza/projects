@@ -1,0 +1,35 @@
+import {createAdvisorSpeech} from './advisor-speech.js';
+import * as T from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+export function createExperience({scene,camera,renderer,rig,getPositions,setYaw}){
+ const question={text:'You received an internship offer. What should you do first?',answers:['A. Start working immediately.','B. Get CPT authorization before starting.','C. Get an offer letter and start working.'],correct:1};
+ const group=new T.Group();scene.add(group);let mixer,advisor,ready=false,state='loading',buttons=[],speech=null,error='',placed=false;
+ scene.add(new T.HemisphereLight(0xffffff,0x777777,2));const light=new T.DirectionalLight(0xffffff,2);light.position.set(-2,5,2);scene.add(light);
+ const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=780;const ctx=canvas.getContext('2d'),texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;
+ const mesh=new T.Mesh(new T.PlaneGeometry(1.5,.975),new T.MeshBasicMaterial({map:texture,transparent:true,side:T.FrontSide}));group.add(mesh);
+ const heading={loading:'Loading advisor…',start:'International Education',welcome:'Welcome',question:'Question 1',incorrect:'Try again',correct:'That’s correct!',done:'Congratulations!'};
+ function wrap(text,x,y,width,size=38){ctx.font=`${size}px Arial`;let line='';for(const word of text.split(' ')){let next=line+word+' ';if(ctx.measureText(next).width>width){ctx.fillText(line,x,y);y+=size*1.25;line=word+' '}else line=next}ctx.fillText(line,x,y);return y+size*1.25}
+ function draw(){ctx.clearRect(0,0,1200,780);ctx.fillStyle='#f8fafb';ctx.beginPath();ctx.roundRect(0,0,1200,780,32);ctx.fill();ctx.fillStyle='#003f77';ctx.font='bold 26px Arial';ctx.fillText('BELLEVUE COLLEGE · INTERNATIONAL EDUCATION',55,65);ctx.fillStyle='#172c40';ctx.font='bold 52px Arial';ctx.fillText(heading[state],55,145);buttons=[];
+ const button=(text,y,action)=>{ctx.fillStyle='#003f77';ctx.beginPath();ctx.roundRect(45,y,1110,100,50);ctx.fill();ctx.fillStyle='white';ctx.font='32px Arial';ctx.fillText(text,78,y+61);buttons.push({y,height:100,action})};
+ if(state==='start'){wrap('Meet your advisor and practice one internship question.',55,230,1080);button('Start Experience',540,()=>play('WelcomeAudio.mp3','welcome','question'))}
+ if(state==='question'){wrap(question.text,55,225,1080,42);question.answers.forEach((a,i)=>button(a,350+i*125,()=>play(i===question.correct?'Correct.mp3':'Incorrect.mp3',i===question.correct?'correct':'incorrect',i===question.correct?'done':'question')))}
+ if(state==='welcome')wrap('Please listen to your advisor’s welcome.',55,245,1080);
+ if(state==='incorrect')wrap('CPT authorization is required before you start working. Listen, then try again.',55,245,1080);
+ if(state==='correct')wrap('You need CPT authorization before starting.',55,245,1080);
+ if(state==='done'){wrap('You completed the first question.',55,245,1080);button('Restart',540,()=>{stop();state='start';error='';draw()})}
+ if(error){wrap(error,55,390,1080,30);button('Retry audio',610,()=>play(lastFile,lastDuring,lastAfter))}texture.needsUpdate=true;
+ }
+ let lastFile,lastDuring,lastAfter;function stop(){speech?.stop()}
+ function play(file,during,after){if(!speech)return;lastFile=file;lastDuring=during;lastAfter=after;error='';state=during;draw();speech.play('./assets/'+file,()=>{state=after;draw()},e=>{console.warn(e);error='Audio could not play. Select Retry audio to continue.';draw()})}
+ new GLTFLoader().load('./assets/advisor.glb',g=>{advisor=g.scene;const box=new T.Box3().setFromObject(advisor),height=box.max.y-box.min.y;advisor.scale.setScalar(1.75/height);const b=new T.Box3().setFromObject(advisor);advisor.position.y=-b.min.y;const holder=new T.Group();holder.add(advisor);advisor=holder;scene.add(advisor);mixer=new T.AnimationMixer(g.scene);speech=createAdvisorSpeech(g.scene,g.animations,mixer);ready=true;state='start';draw()},undefined,e=>{console.error(e);state='loading';heading.loading='Advisor could not load';draw()});draw();
+ let editing=false;const ray=new T.Raycaster(),point=new T.Vector2();function hit(){if(editing)return false;const h=ray.intersectObject(mesh)[0];if(!h)return false;const x=h.uv.x*1200,y=(1-h.uv.y)*780;const b=buttons.find(b=>x>=45&&x<=1155&&y>=b.y&&y<=b.y+b.height);if(b){b.action();return true}return false}
+ const dom=renderer.domElement;let down;dom.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY]},true);dom.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>10)return;let rect=dom.getBoundingClientRect();point.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);ray.setFromCamera(point,camera);hit()},true);
+ const controllers=[0,1].map(i=>{const c=renderer.xr.getController(i);rig.add(c);const line=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(),new T.Vector3(0,0,-5)]),new T.LineBasicMaterial({color:0x397ab5}));c.add(line);c.addEventListener('select',()=>{c.updateWorldMatrix(true,false);ray.setFromXRController(c);hit()});return c});
+
+ const eye=new T.Vector3();let signature='';
+ function entries(){if(!ready)return [];const p=getPositions();const key=['AvisorPosition','advisor','Advisor Position'].find(k=>p[k])||'advisor';return [{key,label:'Advisor',object:advisor,eyeOffset:1.6},{key:'questionPanel',label:'Question / answer panel',object:group,eyeOffset:0}]}
+ function original(entry,positions){const p=positions.playerStart,a=positions.AvisorPosition||positions.advisor||positions['Advisor Position'];const v=positions[entry.key];if(v)return {position:[v.position[0],v.position[1]-entry.eyeOffset,v.position[2]],rotation:v.rotation||[0,v.rotationY,0],scale:v.scale||[1,1,1]};return {position:[p.position[0]+(a.position[0]-p.position[0])*.55,p.position[1]-.55,p.position[2]+(a.position[2]-p.position[2])*.55],rotation:[0,0,0],scale:[1,1,1]}}
+ function apply(entry,values){entry.object.position.fromArray(values.position);entry.object.rotation.set(...values.rotation.map(T.MathUtils.degToRad));entry.object.scale.fromArray(values.scale)}
+ return {getEditableObjects:entries,original,apply,setEditing:value=>{editing=value},update(dt){mixer?.update(dt);speech?.update(dt);const positions=getPositions();const p=positions.playerStart,a=positions.AvisorPosition||positions.advisor||positions['Advisor Position'];if(ready&&p&&a){const sig=JSON.stringify([p,a,positions.questionPanel]);if(sig!==signature){signature=sig;for(const entry of entries()){const value=original(entry,positions);if(entry.eyeOffset&&!positions[entry.key].rotation)value.rotation=[0,T.MathUtils.radToDeg(Math.atan2(p.position[0]-a.position[0],p.position[2]-a.position[2])),0];apply(entry,value)}if(!placed){setYaw(Math.atan2(p.position[0]-a.position[0],p.position[2]-a.position[2]));placed=true}}const view=renderer.xr.isPresenting?renderer.xr.getCamera():camera;view.getWorldPosition(eye);mesh.rotation.y=editing?0:Math.atan2(eye.x-group.position.x,eye.z-group.position.z);controllers.forEach(c=>c.visible=renderer.xr.isPresenting)}}};
+}
+

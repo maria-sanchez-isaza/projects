@@ -1,0 +1,13 @@
+import * as T from 'three';
+// Only advisor dialogue passes through this player and its analyser.
+export function createAdvisorSpeech(model,clips,mixer){
+ const actions={};for(const name of ['Idle','Talking']){const clip=clips.find(c=>c.name===name);if(!clip)throw Error('Missing advisor animation: '+name);actions[name]=mixer.clipAction(clip);actions[name].setLoop(T.LoopRepeat,Infinity)}
+ let current=actions.Idle;current.play();
+ const mouths=[];model.traverse(o=>{const index=o.morphTargetDictionary?.mouthOpen;if(index!==undefined)mouths.push({mesh:o,index})});
+ const audio=new Audio();audio.preload='auto';let context,analyser,samples,source,token=0,speaking=false,openness=0;
+ function animate(talking){speaking=talking;const next=talking?actions.Talking:actions.Idle;if(next!==current){next.reset().setEffectiveTimeScale(1).setEffectiveWeight(1).play();current.crossFadeTo(next,.25,false);current=next}if(!talking){openness=0;mouths.forEach(({mesh,index})=>mesh.morphTargetInfluences[index]=0)}}
+ function stop(){++token;audio.onplaying=audio.onpause=audio.onwaiting=audio.onended=audio.onerror=null;audio.pause();audio.removeAttribute('src');audio.load();animate(false)}
+ function connect(){if(context)return;const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)throw Error('Web Audio is unavailable in this browser.');context=new AudioContext();analyser=context.createAnalyser();analyser.fftSize=1024;samples=new Uint8Array(analyser.fftSize);source=context.createMediaElementSource(audio);source.connect(analyser);analyser.connect(context.destination)}
+ function play(url,onEnded,onError){stop();const run=token;const fail=e=>{if(run!==token)return;stop();onError(e)};try{connect();audio.src=url;audio.onplaying=()=>{if(run===token)animate(true)};audio.onwaiting=audio.onpause=()=>{if(run===token)animate(false)};audio.onended=()=>{if(run!==token)return;animate(false);onEnded()};audio.onerror=()=>fail(Error('Dialogue audio could not load.'));/* Start both during the button gesture for mobile/XR autoplay rules. */const resume=context.resume();const playback=audio.play();Promise.all([resume,playback]).catch(fail)}catch(e){fail(e)}}
+ return {play,stop,update(dt){let target=0;if(speaking&&!audio.paused&&analyser&&context.state==='running'){analyser.getByteTimeDomainData(samples);let sum=0;for(const value of samples){const n=(value-128)/128;sum+=n*n}const rms=Math.sqrt(sum/samples.length);target=rms>.018?Math.min(.9,(rms-.018)*7):0}openness+=(target-openness)*(1-Math.exp(-dt*(target>openness?24:18)));if(openness<.005)openness=0;for(const {mesh,index} of mouths)mesh.morphTargetInfluences[index]=openness}};
+}

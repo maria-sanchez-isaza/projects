@@ -28,12 +28,20 @@
       "id": "cpt-advisor",
       "name": "Advisor CPT",
       "position": [
-        -2.3172,
+        -2.8828289093495716,
         -0.6,
-        0.2386
+        0.004158781005093981
       ],
       "radius": 1.65,
-      "interaction": "cpt"
+      "interaction": "cpt",
+      "landingViewpoint": {
+        "position": [
+          -2.8828289093495716,
+          1.35,
+          0.004158781005093981
+        ],
+        "rotationY": -106.18874798781587
+      }
     }
   ]
 }

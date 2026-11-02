@@ -27,3 +27,5 @@ Positions use the fixed scene coordinate system. The legacy AvisorPosition spell
 Desktop: drag to look, WASD/arrows to move, Q/E for vertical movement. Mobile: drag to look and use the circular joystick. Quest: left stick moves, right stick snaps 30 degrees; hold/release left trigger for polygon-bounded teleportation; right trigger selects buttons or a hotspot ring. Clicking/tapping a ring uses its saved landing viewpoint and activates the CPT interaction. Rings remain visible. Enter VR appears when supported. Controller models and optional tracked hand meshes load locally; hands are visual only.
 
 The splat has no furniture/wall collision geometry. Adjust the floor polygon and viewpoints in the editor, and verify comfort, positions, controller/hand switching and audio on Quest. The advisor, Idle/Talking clips and audio-driven mouth movement are preserved.
+
+The question card now hides when the player leaves the hotspot radius and returns on re-entry without resetting question progress. Editor preview still displays the panel for placement.

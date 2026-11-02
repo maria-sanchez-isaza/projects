@@ -1,0 +1,39 @@
+{
+  "navigation": {
+    "floorY": -0.65,
+    "polygon": [
+      [
+        -6.1906798325894625,
+        -3.2012835919360665
+      ],
+      [
+        -0.5,
+        -3.7326631070764424
+      ],
+      [
+        1.763506289263999,
+        1.8
+      ],
+      [
+        -4.110312023419463,
+        2.666202569151533
+      ]
+    ],
+    "moveSpeed": 1.5,
+    "snapDegrees": 30,
+    "maxTeleportDistance": 6
+  },
+  "hotspots": [
+    {
+      "id": "cpt-advisor",
+      "name": "Advisor CPT",
+      "position": [
+        -2.3172,
+        -0.6,
+        0.2386
+      ],
+      "radius": 1.65,
+      "interaction": "cpt"
+    }
+  ]
+}

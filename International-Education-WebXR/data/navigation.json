@@ -1,0 +1,10 @@
+{
+  "floorY": -0.6,
+  "minX": -5.0,
+  "maxX": -0.5,
+  "minZ": -1.5,
+  "maxZ": 1.8,
+  "moveSpeed": 1.5,
+  "snapDegrees": 30,
+  "maxTeleportDistance": 6
+}

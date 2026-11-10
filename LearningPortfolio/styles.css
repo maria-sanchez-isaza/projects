@@ -1,0 +1,361 @@
+:root {
+  color-scheme: light;
+  --paper: #fffefa;
+  --ink: #1c1c1c;
+  --muted-ink: #454545;
+  --blue: #8db9e4;
+  --blue-wash: #edf5fc;
+  --blue-ink: #244c73;
+  --coral: #ff8760;
+  --coral-wash: #fff0e9;
+  --yellow: #fade3c;
+  --yellow-wash: #fffbe5;
+  --pink: #ffbcd8;
+  --pink-wash: #fff0f6;
+  --rule: #c9d1d7;
+  --focus: #a94327;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --font: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--ink);
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--focus);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 5px;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 1;
+  top: 0.75rem;
+  left: 0.75rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  background: var(--paper);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page-width {
+  width: min(100% - 3rem, 69rem);
+  margin-inline: auto;
+}
+
+.intro {
+  max-width: 49rem;
+  padding-block: clamp(4rem, 9vw, 8rem) clamp(5rem, 10vw, 8.5rem);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(3.15rem, 7.8vw, 5.75rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  width: fit-content;
+  margin-bottom: clamp(2.8rem, 5vw, 4.5rem);
+  padding: 0.15rem 0.45rem 0.3rem;
+  margin-left: -0.45rem;
+  border-bottom: 3px solid var(--coral);
+  background: var(--blue-wash);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.welcome {
+  max-width: 65ch;
+  margin-bottom: 1.6rem;
+  color: var(--muted-ink);
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  line-height: 1.75;
+}
+
+.text-link {
+  display: inline-block;
+  position: relative;
+  min-height: 44px;
+  padding-block: 0.45rem;
+  font-weight: 600;
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0.08em;
+  left: 0;
+  height: 2px;
+  background: var(--coral);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms var(--ease-out);
+}
+
+.text-link:hover::after,
+.text-link:focus-visible::after,
+.text-link:active::after {
+  transform: scaleX(1);
+}
+
+.weeks {
+  scroll-margin-top: 2rem;
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.7rem, 2.7vw, 2.15rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  margin-bottom: 0;
+  color: var(--blue-ink);
+  font-size: 0.9rem;
+}
+
+.week-list {
+  border-top: 1px solid var(--ink);
+}
+
+.week {
+  --accent: var(--blue);
+  --wash: var(--blue-wash);
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1.8rem 2rem;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 2rem;
+  transition: background-color 180ms ease-out;
+}
+
+.week:nth-child(4n + 2) {
+  --accent: var(--coral);
+  --wash: var(--coral-wash);
+}
+
+.week:nth-child(4n + 3) {
+  --accent: var(--yellow);
+  --wash: var(--yellow-wash);
+}
+
+.week:nth-child(4n + 4) {
+  --accent: var(--pink);
+  --wash: var(--pink-wash);
+}
+
+.week:hover,
+.week:focus-within,
+.week:target {
+  background: var(--wash);
+}
+
+.week-number {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  width: 2.65rem;
+  height: 2.65rem;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  transition: background-color 180ms ease-out, transform 220ms var(--ease-out);
+}
+
+.week:hover .week-number,
+.week:focus-within .week-number,
+.week:target .week-number {
+  transform: translateX(0.2rem);
+}
+
+.week-content h3 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.week-content {
+  min-width: 0;
+}
+
+.week-link {
+  display: inline-block;
+  min-height: 44px;
+  max-width: 100%;
+  margin: -0.35rem -0.15rem;
+  padding: 0.35rem 0.15rem;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  overflow-wrap: anywhere;
+  transition: color 180ms ease-out, text-decoration-color 180ms ease-out;
+}
+
+.week-link:hover,
+.week-link:focus-visible,
+.week:hover .week-link,
+.week:focus-within .week-link,
+.week:target .week-link {
+  color: var(--blue-ink);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+.week-link:active {
+  text-decoration-thickness: 3px;
+}
+
+.week-content > :last-child {
+  margin-bottom: 0;
+}
+
+.week-status {
+  margin-bottom: 0;
+  color: var(--muted-ink);
+  font-size: 0.95rem;
+}
+
+.week-content > p:not(.week-status) {
+  max-width: 65ch;
+  margin-top: 1.3rem;
+}
+
+.embed {
+  width: 100%;
+  max-width: 48rem;
+  margin-top: 1.5rem;
+  aspect-ratio: 16 / 9;
+  background: var(--blue-wash);
+}
+
+.embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--rule);
+}
+
+.site-footer {
+  border-top: 1px solid var(--ink);
+}
+
+.site-footer .page-width {
+  padding-block: 1.35rem 1.6rem;
+}
+
+.site-footer p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 0.875rem;
+  letter-spacing: 0.015em;
+}
+
+@media (max-width: 640px) {
+  .page-width {
+    width: min(100% - 2.5rem, 69rem);
+  }
+
+  .intro {
+    padding-block: 4.5rem 5rem;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading p {
+    margin-top: 0.35rem;
+  }
+
+  .week {
+    grid-template-columns: 2.65rem minmax(0, 1fr);
+    gap: 0.8rem;
+    padding-block: 1.5rem 1.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-link::after,
+  .week,
+  .week-number,
+  .week-link {
+    transition: none;
+  }
+
+  .week:hover .week-number,
+  .week:focus-within .week-number,
+  .week:target .week-number {
+    transform: none;
+  }
+}

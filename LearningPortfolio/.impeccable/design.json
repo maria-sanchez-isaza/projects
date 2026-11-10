@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T21:53:00Z",
+  "title": "Design System: Exploring eLearning Tools",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Paper" },
+      "ink": { "role": "neutral", "displayName": "Deep Ink" },
+      "muted-ink": { "role": "neutral", "displayName": "Muted Ink" },
+      "blue": { "role": "primary", "displayName": "Airy Blue" },
+      "blue-wash": { "role": "primary", "displayName": "Blue Wash" },
+      "blue-ink": { "role": "primary", "displayName": "Blue Ink" },
+      "coral": { "role": "secondary", "displayName": "Coral" },
+      "coral-wash": { "role": "secondary", "displayName": "Coral Wash" },
+      "yellow": { "role": "secondary", "displayName": "Sun Yellow" },
+      "yellow-wash": { "role": "secondary", "displayName": "Yellow Wash" },
+      "pink": { "role": "secondary", "displayName": "Soft Pink" },
+      "pink-wash": { "role": "secondary", "displayName": "Pink Wash" },
+      "rule": { "role": "neutral", "displayName": "Soft Rule" },
+      "focus": { "role": "secondary", "displayName": "Warm Focus" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Course title." },
+      "body": { "displayName": "Body", "purpose": "Base copy." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "Portfolio descriptor." },
+      "introduction": { "displayName": "Introduction", "purpose": "Welcome copy." },
+      "section": { "displayName": "Section", "purpose": "Weekly work heading." },
+      "section-note": { "displayName": "Section Note", "purpose": "Small section context." },
+      "week-title": { "displayName": "Week Title", "purpose": "Weekly topic headings." },
+      "week-meta": { "displayName": "Week Meta", "purpose": "Numbers and statuses." },
+      "footer": { "displayName": "Footer", "purpose": "Understated author credit." }
+    },
+    "breakpoints": [{ "name": "phone", "value": "640px" }]
+  },
+  "components": [
+    {
+      "name": "Weekly Entry",
+      "kind": "custom",
+      "description": "A growing ruled row for a weekly topic and its artifact.",
+      "html": "<article class=\"ds-week\" id=\"ds-week-01\"><span class=\"ds-week-number\">01</span><div><h3><a href=\"#ds-week-01\">Websites &amp; Online Publishing</a></h3><p>Portfolio shell created.</p></div></article>",
+      "css": ".ds-week { display:grid; grid-template-columns:4.5rem minmax(0,1fr); gap:1rem; padding:1.8rem 0 2rem; border-bottom:1px solid var(--rule); color:var(--ink); font-family:var(--font); } .ds-week:hover, .ds-week:focus-within, .ds-week:target { background:var(--blue-wash); } .ds-week-number { display:grid; place-items:center; width:2.65rem; height:2.65rem; background:var(--blue); color:var(--ink); font-variant-numeric:tabular-nums; } .ds-week h3 { margin:0 0 .55rem; font-size:1.4rem; line-height:1.35; } .ds-week a { display:inline-block; min-height:44px; color:var(--ink); text-underline-offset:.2em; } .ds-week a:focus-visible { outline:3px solid var(--focus); outline-offset:5px; } .ds-week p { margin:0; color:var(--muted-ink); }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "nav",
+      "description": "Underlined navigation in the reading flow.",
+      "html": "<a class=\"ds-link\" href=\"#weeks\">Browse weekly work</a>",
+      "css": ".ds-link { position:relative; display:inline-block; min-height:44px; color:var(--ink); font-family:var(--font); font-weight:600; text-underline-offset:.2em; } .ds-link::after { content:''; position:absolute; left:0; right:0; bottom:.08em; height:2px; background:var(--coral); transform:scaleX(0); transform-origin:left; transition:transform 220ms cubic-bezier(.16,1,.3,1); } .ds-link:hover::after, .ds-link:focus-visible::after, .ds-link:active::after { transform:scaleX(1); } .ds-link:focus-visible { outline:3px solid var(--focus); outline-offset:5px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Course Index",
+    "overview": "This is an editorial reading surface for six weeks of experiments. The interface gives each topic room to breathe and lets future artifacts, reflections, and embeds become the focus.",
+    "keyCharacteristics": ["Airy blue", "Coral, yellow, and pink accents", "Ruled weekly entries", "Equivalent hover and focus feedback", "Generous reading space"],
+    "rules": [
+      { "name": "The Coordinated Color Rule", "body": "The page stays on warm off-white, with a plain section heading. Small week-number blocks cycle through blue, coral, yellow, and pink; soft matching washes appear on hover, focus within, or a linked target. Near-black ink carries the content and preserves contrast.", "section": "colors" },
+      { "name": "The Growing Entry Rule", "body": "Each weekly entry starts as a ruled row and grows vertically when a link, reflection, or embed is added.", "section": "layout" },
+      { "name": "The Equivalent Response Rule", "body": "Each weekly heading is a real permalink with a 44px minimum touch target. Hover, keyboard focus within, and touch navigation to the linked target produce matching row emphasis. The browse link receives a fast coral underline fill on hover, focus, and press. Reduced-motion settings keep the color feedback and remove movement.", "section": "layout" }
+    ],
+    "dos": ["Do keep each week easy to scan and edit in place.", "Do let the artifacts supply future visual interest."],
+    "donts": ["Don't add decorative imagery, large scroll animations, or extra navigation to this Week 1 shell."]
+  }
+}

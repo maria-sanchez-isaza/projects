@@ -85,9 +85,10 @@ The page uses straight edges and simple horizontal rules. No cards or rounded co
 
 ## Components
 
-- **Weekly entry:** two-digit week number in a color block, linked topic heading, status, then optional artifact content.
+- **Weekly entry:** two-digit week number in a color block, linked topic heading, description or status, then optional artifact content.
 - **Text link:** underline in the reading flow, a coral underline fill on hover, and a strong visible focus outline.
-- **Embed:** responsive 16:9 wrapper with a named iframe and a quiet blue fallback surface.
+- **Form disclosure:** a square blue-wash button with a coral bottom rule. The form stays closed by default; the button reports its state with `aria-expanded`, reveals the tall embed, and keeps the same hover and focus language as other controls. Reduced-motion visitors receive the state change without animation.
+- **Embed:** responsive 16:9 wrapper for media with a named iframe and a quiet blue fallback surface. Tall forms use a narrower wrapper and a viewport-aware iframe height to limit nested scrolling on phones.
 - **Footer credit:** a small, understated name below the weekly work.
 
 ## Do's and Don'ts

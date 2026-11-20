@@ -6,7 +6,7 @@
 web
 
 ## Stack
-Static HTML and CSS, as explicitly required by the brief. No build step.
+Static HTML, CSS, and a small local JavaScript file for the Week 2 disclosure. No build step.
 
 ## Users
 Visitors to a course portfolio who want to find weekly learning artifacts and reflections.
@@ -18,9 +18,9 @@ This one-page portfolio introduces the Exploring eLearning Tools course work and
 Week 1 begins with a simple website shell. The same site will be updated throughout the course and published to GitHub Pages.
 
 ## Capabilities and Constraints
-- Six weekly entries, with Week 1 marked “Portfolio shell created” and Weeks 2–6 marked “Coming soon.”
+- Six weekly entries. Weeks 1 and 2 include descriptions, and Week 2 has a Google Forms feedback form behind an accessible show/hide button. Weeks 3–6 remain “Coming soon.”
 - Future entries can hold artifact links, reflections, and iframe embeds.
-- Self-contained folder with relative paths, no build or server requirement, and no analytics, forms, database, login, or unnecessary dependencies.
+- Self-contained folder with relative paths, no build or server requirement, and no analytics, site-owned forms, database, login, or unnecessary dependencies.
 - Responsive, keyboard accessible, touch friendly, and motion considerate.
 
 ## Brand Commitments
@@ -29,7 +29,7 @@ Week 1 begins with a simple website shell. The same site will be updated through
 - Existing portfolio is a stronger reference for its light blue, coral, yellow, pink, off-white, and black palette, plus hover behavior, subtle motion, and personality; its layout is not a template.
 
 ## Evidence on Hand
-The course title, introduction, six weekly topics, and initial statuses were supplied in the brief. No weekly artifacts have been supplied yet.
+The course title, introduction, six weekly topics, Week 1 and Week 2 descriptions, and the Week 2 Google Form URL were supplied in the brief. Weeks 3–6 have no artifacts yet.
 
 ## Product Principles
 - Let weekly work become the focus as it is added.

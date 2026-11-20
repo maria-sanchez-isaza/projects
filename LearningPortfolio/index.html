@@ -7,6 +7,7 @@
     <meta name="description" content="A six-week digital learning portfolio for Exploring eLearning Tools.">
     <title>Exploring eLearning Tools — Digital Learning Portfolio</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -30,7 +31,7 @@
             <span class="week-number" aria-hidden="true">01</span>
             <div class="week-content">
               <h3 id="week-01-title"><a class="week-link" href="#week-01"><span class="sr-only">Week 1: </span>Websites &amp; Online Publishing</a></h3>
-              <p class="week-status">Portfolio shell created.</p>
+              <p class="week-description">This portfolio shell was created as part of the Week 1 assignment. The goal was to build a simple website that I can use throughout the course to collect weekly experiments, artifacts, and reflections.</p>
             </div>
           </article>
 
@@ -38,14 +39,16 @@
             <span class="week-number" aria-hidden="true">02</span>
             <div class="week-content">
               <h3 id="week-02-title"><a class="week-link" href="#week-02"><span class="sr-only">Week 2: </span>Collaboration &amp; Authoring Tools</a></h3>
-              <p class="week-status">Coming soon</p>
-              <!-- Add a future artifact here, for example:
-              <p><a href="https://example.com">View my artifact</a></p>
-              <p>My reflection on what I learned...</p>
-              <div class="embed">
-                <iframe title="Week 2 collaboration artifact preview" src="https://example.com/embed" loading="lazy" allowfullscreen></iframe>
+              <p class="week-description">For Week 2, I explored Google Forms as a collaboration and authoring tool and learned how to embed an interactive form directly into this website. You can use the form below to give me feedback on the portfolio.</p>
+              <button class="form-toggle" type="button" aria-expanded="false" aria-controls="week-02-form" hidden>Show feedback form</button>
+              <div id="week-02-form" class="form-disclosure" aria-hidden="true" inert hidden>
+                <div class="form-disclosure-inner">
+                  <div class="form-embed">
+                    <iframe title="Week 2 portfolio feedback form" src="https://docs.google.com/forms/d/e/1FAIpQLSdogZ1dCWnrYZkD48jDRGXp9YceQj8c6w1P88BVhZZbfO0wOg/viewform?embedded=true" width="640" height="763" loading="lazy">Loading the Week 2 feedback form…</iframe>
+                  </div>
+                </div>
               </div>
-              -->
+              <p class="form-fallback"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdogZ1dCWnrYZkD48jDRGXp9YceQj8c6w1P88BVhZZbfO0wOg/viewform">Open the Week 2 feedback form directly</a></p>
             </div>
           </article>
 

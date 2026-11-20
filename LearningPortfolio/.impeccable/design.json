@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-10T21:53:00Z",
+  "generatedAt": "2026-11-20T19:54:51Z",
   "title": "Design System: Exploring eLearning Tools",
   "extensions": {
     "colorMeta": {
@@ -37,8 +37,22 @@
       "name": "Weekly Entry",
       "kind": "custom",
       "description": "A growing ruled row for a weekly topic and its artifact.",
-      "html": "<article class=\"ds-week\" id=\"ds-week-01\"><span class=\"ds-week-number\">01</span><div><h3><a href=\"#ds-week-01\">Websites &amp; Online Publishing</a></h3><p>Portfolio shell created.</p></div></article>",
+      "html": "<article class=\"ds-week\" id=\"ds-week-01\"><span class=\"ds-week-number\">01</span><div><h3><a href=\"#ds-week-01\">Websites &amp; Online Publishing</a></h3><p>A weekly description can grow here.</p></div></article>",
       "css": ".ds-week { display:grid; grid-template-columns:4.5rem minmax(0,1fr); gap:1rem; padding:1.8rem 0 2rem; border-bottom:1px solid var(--rule); color:var(--ink); font-family:var(--font); } .ds-week:hover, .ds-week:focus-within, .ds-week:target { background:var(--blue-wash); } .ds-week-number { display:grid; place-items:center; width:2.65rem; height:2.65rem; background:var(--blue); color:var(--ink); font-variant-numeric:tabular-nums; } .ds-week h3 { margin:0 0 .55rem; font-size:1.4rem; line-height:1.35; } .ds-week a { display:inline-block; min-height:44px; color:var(--ink); text-underline-offset:.2em; } .ds-week a:focus-visible { outline:3px solid var(--focus); outline-offset:5px; } .ds-week p { margin:0; color:var(--muted-ink); }"
+    },
+    {
+      "name": "Tall Form Embed",
+      "kind": "custom",
+      "description": "A narrow responsive frame for a Google Form or another tall interactive embed.",
+      "html": "<div class=\"ds-form-embed\"><iframe title=\"Example feedback form\" src=\"about:blank\"></iframe></div>",
+      "css": ".ds-form-embed { width:100%; max-width:40rem; margin-top:1.25rem; } .ds-form-embed iframe { display:block; width:100%; height:900px; border:1px solid var(--rule); background:#fff; } @media (max-width:640px) { .ds-form-embed iframe { height:clamp(1100px,calc(1750px - 100vw),1500px); } }"
+    },
+    {
+      "name": "Form Disclosure Button",
+      "kind": "button",
+      "description": "Opens and closes the Week 2 feedback form with visible focus and a clear state label.",
+      "html": "<button class=\"ds-form-toggle\" type=\"button\" aria-expanded=\"false\" aria-controls=\"ds-form-panel\">Show feedback form</button><div id=\"ds-form-panel\" hidden></div>",
+      "css": ".ds-form-toggle { min-height:44px; padding:.55rem 1rem; border:1px solid var(--blue-ink); border-bottom:3px solid var(--coral); background:var(--blue-wash); color:var(--ink); font:inherit; font-weight:600; cursor:pointer; } .ds-form-toggle:hover, .ds-form-toggle:focus-visible { background:var(--blue); } .ds-form-toggle:focus-visible { outline:3px solid var(--focus); outline-offset:5px; }"
     },
     {
       "name": "Text Link",

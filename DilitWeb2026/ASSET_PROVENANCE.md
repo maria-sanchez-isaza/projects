@@ -2,6 +2,7 @@
 
 - `media/logo.png`: copia sin cambios de `Assets/Logo.png`.
 - `media/logo-header-transparent.png`: copia preparada a partir de `Assets/DILIT-LOGO-NEGRO-TRANSP.png`. Se retiró el fondo blanco opaco del archivo suministrado y se oscurecieron los trazos grises; se conservaron la forma, las proporciones y los círculos de color originales.
+- `media/logo-header.png`: copia sin cambios de `Assets/DILIT-LOGO-BLANCO-TRANSParente.png`, logo completo suministrado por el cliente con la leyenda debajo. Se usa en la cabecera, sin texto duplicado a su lado.
 - `media/sellalit-*.png`: recortes y reducción de tamaño de `Assets/Garrafas-1.png`. Las garrafas, etiquetas y colores no fueron modificados.
 - `media/imprenta-hero.jpg`: imagen editorial generada con la herramienta integrada de generación de imágenes y optimizada a JPEG. Es ilustrativa; no representa una instalación específica de Dilit.
 - `media/imprenta-hero-reference.jpg`: nueva fotografía editorial generada con la herramienta integrada de imágenes usando la captura de referencia como guía de composición. Optimizada a JPEG. Es ilustrativa; no representa una instalación específica de Dilit.

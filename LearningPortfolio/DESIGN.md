@@ -69,7 +69,7 @@ The display title has a large, open sans-serif voice. Supporting copy stays in a
 
 ## Layout
 
-**The Growing Entry Rule.** Each weekly entry starts as a ruled row and grows vertically when a link, reflection, or embed is added. The page uses one wide container with a narrower introductory reading measure. At phone widths, content remains in one column with the number beside its heading.
+**The Growing Entry Rule.** Each weekly entry starts as a ruled row and grows vertically when a link, reflection, or embed is added. The page uses one wide container; the introductory copy keeps a narrower reading measure while the title shares its row with the course illustration on wide screens. At phone widths, content remains in one column with the number beside its heading.
 
 Long titles may wrap within their column, including at enlarged text sizes; they must not create horizontal scrolling.
 
@@ -89,6 +89,7 @@ The page uses straight edges and simple horizontal rules. No cards or rounded co
 - **Text link:** underline in the reading flow, a coral underline fill on hover, and a strong visible focus outline.
 - **Form disclosure:** a square blue-wash button with a coral bottom rule. The form stays closed by default; the button reports its state with `aria-expanded`, reveals the tall embed, and keeps the same hover and focus language as other controls. Reduced-motion visitors receive the state change without animation.
 - **Embed:** responsive 16:9 wrapper for media with a named iframe and a quiet blue fallback surface. Tall forms use a narrower wrapper and a viewport-aware iframe height to limit nested scrolling on phones.
+- **Illustration:** one local SVG extends into the hero's open right side at a large scale, while the HTML title stays in front and readable. It moves beneath the title on narrower screens. The same responsive file is the described Week 3 artifact.
 - **Footer credit:** a small, understated name below the weekly work.
 
 ## Do's and Don'ts

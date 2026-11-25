@@ -87,10 +87,38 @@ a:focus-visible {
 }
 
 .intro {
-  max-width: 49rem;
+  max-width: 69rem;
   padding-block: clamp(4rem, 9vw, 8rem) clamp(5rem, 10vw, 8.5rem);
 }
 
+.hero-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  align-items: center;
+  gap: 0;
+  margin-bottom: clamp(2.8rem, 5vw, 4.5rem);
+  overflow: clip;
+  overflow-clip-margin: 0.5rem;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-heading .subtitle {
+  margin-bottom: 0;
+}
+
+.hero-illustration {
+  display: block;
+  width: clamp(31rem, 55vw, 42.5rem);
+  max-width: none;
+  height: auto;
+  justify-self: end;
+  margin-right: -5rem;
+  pointer-events: none;
+}
 h1,
 h2,
 h3,
@@ -294,6 +322,12 @@ h1 {
   line-height: 1.7;
 }
 
+.week-artifact-image {
+  display: block;
+  width: min(100%, 36rem);
+  height: auto;
+  margin-top: 1.5rem;
+}
 .week-content > p:not(.week-status):not(.week-description):not(.form-fallback) {
   max-width: 65ch;
   margin-top: 1.3rem;
@@ -404,6 +438,18 @@ h1 {
   letter-spacing: 0.015em;
 }
 
+@media (max-width: 980px) {
+  .hero-heading {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero-illustration {
+    width: min(calc(100% + 5rem), 40rem);
+    justify-self: center;
+    margin-right: 0;
+  }
+}
 @media (max-width: 640px) {
   .page-width {
     width: min(100% - 2.5rem, 69rem);
